@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "lamplit-site",
+  "account_id": "4a7d2cc3b61181986870b57848eff910",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-09-29",
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "lamplit.run", "custom_domain": true },
+    { "pattern": "guide.lamplit.run/*", "zone_name": "lamplit.run" }
+  ],
+  "assets": { "directory": "./dist", "binding": "ASSETS", "run_worker_first": true },
+  "observability": { "enabled": true }
+}
