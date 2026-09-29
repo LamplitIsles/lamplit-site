@@ -19,9 +19,9 @@ bun run build
 
 `content/README.md` 记录编辑方向与完整选题。文章由 `src/lib/server/content.js` 显式登记，在构建时渲染受版本控制的 Markdown；不接收访客 HTML。根目录 `letter.md` 保留作者原稿。`content/guide/index.md` 和 `content/docs/index.md` 是编辑骨架，公开入口分别用 `welcome.md`，避免把内部编写说明展示给读者。
 
-构建产物在 `dist/`。生产站部署于 Sven Snape 的 Cloudflare 账户：`lamplit.run` 承载官网、`/guide/` 教程和 `/docs/` 托管文档。`guide.lamplit.run` 只兼容旧链接，永久跳转到 `lamplit.run/guide/` 或根域名上的对应路径，不再提供第二套站点。`wrangler.jsonc` 将根域名设为 Worker Custom Domain，并为旧教程域名保留精确跳转路由；它们不改动 `app.lamplit.run` 的应用路由。官网和托管说明中的注册/登录入口指向 `https://app.lamplit.run/login`。
+构建产物在 `dist/`。生产站部署于 Sven Snape 的 Cloudflare 账户：`lamplit.run` 承载官网、`/guide/` 教程和 `/docs/` 托管文档。`wrangler.jsonc` 只给根域名配置 Worker Custom Domain；没有独立的 guide 站点或跳转路由。它不改动 `app.lamplit.run` 的应用路由。官网和托管说明中的注册/登录入口指向 `https://app.lamplit.run/login`。
 
-部署时运行 `bun run check && bun run build && bunx wrangler deploy`。Wrangler 配置固定使用 Sven Snape 账户；发布后检查官网、`/docs/`、教程跳转及应用登录入口。`dist/` 不入库，必须先构建再部署。
+部署时运行 `bun run check && bun run build && bunx wrangler deploy`。Wrangler 配置固定使用 Sven Snape 账户；发布后检查官网、`/docs/`、`/guide/` 及应用登录入口。`dist/` 不入库，必须先构建再部署。
 
 旧 `../guide` 的地图快照、留言板及 D1 实现仍保留在原目录；此切片尚未迁入留言板。旧 `../lamplit` 官网用于表达与结构参考，其 Docker、Core/Full 与运行能力不作为本版说明。
 
