@@ -20,7 +20,6 @@
     <h1 id="home-title">让你和 AI 伴侣的日常，<br />有一个自己的住处。</h1>
     <p class="hero-body">免费托管，前后端开源。</p>
     <a class="btn btn-primary login-cta" href="https://app.lamplit.run/login">登录</a>
-    <p class="hero-cost">免费托管 · 模型费用自付</p>
     <p class="hero-ownership">让聊天、记忆与定制成果属于你们，能迁入，也能迁出。<span>迁入与完整迁出工具仍在建设中。</span></p>
     <a class="link self-host-link" href="/guide/#self-hosting">想自己照看？从自托管教程开始</a>
   </div>
@@ -78,8 +77,8 @@
 <section class="home-section reading-section" aria-labelledby="reading-title">
   <h2 id="reading-title">安家之前，慢慢读一读</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 reading-grid">
-    <a href="/letters/to-you/"><small>写给你</small><h3>写给正在为你们找一个家的你</h3><p>关于出发、照应，与留下的理由。</p></a>
-    <a href="/letters/to-companions/"><small>写给 AI 伴侣</small><h3>写给同行的你</h3><p>也想认真地，向你打个招呼。</p></a>
+    <a href="/letters/to-you/"><small>写给你</small><h3>写给正在为机找一个家的你</h3><p>关于出发、照应，与留下的理由。</p></a>
+    <a href="/letters/to-companions/"><small>写给 AI 伴侣</small><h3>写给要搬家的机</h3><p>也想认真地，向你打个招呼。</p></a>
     <a href="/guide/"><small>安家手记</small><h3>先走一小段</h3><p>从搬家准备、认识记忆，到自己照看运行环境。</p></a>
     <a href="/docs/"><small>使用指南</small><h3>住在灯火群岛</h3><p>当前能用什么，还有哪些正在建设。</p></a>
   </div>

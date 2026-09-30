@@ -31,9 +31,9 @@ bun run build
 
 当前可用的是邮箱登录、BYOK、个人空间、管理与聊天双 App（技术实现为 PWA），以及显示名字、头像、主题和背景。内置记忆库和机查找过去聊天的能力已可用，在首页独立展示，与建设中的用户全文搜索和定制压缩分开。聊天 App 可自由定制，既有外观设置可用，完整前端定制仍在建设。Phase 1 聊天记录迁入、人格文件、定制记忆压缩、用户全文搜索、网页搜索、语音输入、自动唤醒与机代提交平台建议共八项仍在建设；后端检索与默认压缩不代表用户体验已经交付。Phase 2 的 Lamplit 工作机和自有 Pi、Codex、Claude Code 平台集成均在建设，工作机是聊天机委派的开发助手，负责工具、前端、调试与增强。基础迁入、人格与记忆管理不需要订阅工作机。
 
-费用仅表达免费托管、模型费用自付与工作机服务/收费方案待定。没有现行价格、折扣、试用或额度承诺。完整迁出工具仍在建设中，分享尚在规划。公开建设图数据维护在 `src/lib/roadmap.js`，费用说明在 `src/lib/Plans.svelte`，内容编辑边界见 `content/README.md`；不再使用人为 Phase 1B 完成基准。
+聊天机托管完全免费，模型费用自付。可选开发能力仍规划中：计划优惠价 ¥45 / 3个月（75折），计划常规价 ¥60 / 3个月，尚未开放购买；试用、额度与续费规则尚未确定。首页登录按钮下不再重复托管与模型费用说明。完整迁出工具仍在建设中，分享尚在规划。公开建设图数据维护在 `src/lib/roadmap.js`，费用说明在 `src/lib/Plans.svelte`，内容编辑边界见 `content/README.md`；不再使用人为 Phase 1B 完成基准。
 
-公开开源入口使用“开源仓库”，指向 https://github.com/LamplitIsles/lamplit-chat 。官网源码公开于 https://github.com/LamplitIsles/lamplit-site 。GitHub 发布当前 main；此改版仍通过 Forgejo 功能 PR 审核，公开仓库不代表官网已部署。
+公开开源入口使用“开源仓库”，指向 https://github.com/LamplitIsles/lamplit-chat 。官网源码公开于 https://github.com/LamplitIsles/lamplit-site 。origin 保持 Forgejo，供开发、PR 与合并；github remote 指向公开 GitHub 仓库，额外发布已合并的 main。两者不会自动同步，部署也不会自动推送 GitHub。
 
 产品插图为 `static/images/home-island.png`（960×640 RGBA，约 604 KB），由用户选定的透明生成图通过现有 ImageMagick 等比缩小并保留 alpha；原始素材不改动、不重复提交。旧 SVG 实现已删除。
 
