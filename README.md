@@ -35,7 +35,7 @@ bun run build
 
 公开开源入口使用“开源仓库”，指向 https://github.com/LamplitIsles/lamplit-chat 。官网源码公开于 https://github.com/LamplitIsles/lamplit-site 。origin 保持 Forgejo，供开发、PR 与合并；github remote 指向公开 GitHub 仓库，额外发布已合并的 main。两者不会自动同步，部署也不会自动推送 GitHub。
 
-产品插图为 `static/images/home-island.png`（960×640 RGBA，约 604 KB），由用户选定的透明生成图通过现有 ImageMagick 等比缩小并保留 alpha；原始素材不改动、不重复提交。旧 SVG 实现已删除。
+产品插图为 `static/images/home-island.png`（960×640 RGBA，约 604 KB），由用户选定的透明生成图通过现有 ImageMagick 等比缩小并保留 alpha；原始素材不改动、不重复提交。旧 SVG 实现已删除。浏览器 favicon 使用雾蓝底色与暖金星灯，SVG 为主，16/32px ICO 为兼容格式。
 
 ## 本地验证与交付
 
