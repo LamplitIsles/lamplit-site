@@ -24,7 +24,7 @@ export const pages = [
     file: "guide/welcome",
     title: "安家手记",
     group: "安家手记",
-    description: "从认识自建，到照看你们的小家。",
+    description: "想给你和 AI 伴侣的日常，留一个自己的住处。",
   },
   {
     path: "guide/before-moving",
