@@ -1,3 +1,6 @@
+<script>
+  import ArrowRight from "lucide-svelte/icons/arrow-right";
+</script>
 <section class="home-section cost-note" id="costs" aria-labelledby="costs-title">
   <h2 id="costs-title">托管与费用</h2>
   <!-- svelte-ignore a11y_no_noninteractive_tabindex (Keyboard users can focus the region to scroll the horizontal plans.) -->
@@ -8,7 +11,7 @@
         <h3>自托管</h3>
         <p>聊天机前后端开源，自行部署、配置与维护。</p>
         <p>模型与云资源费用自付。</p>
-        <div class="card-actions mt-auto"><a class="link" href="/guide/#self-hosting">阅读自托管说明 →</a></div>
+        <div class="card-actions mt-auto"><a class="link" href="/guide/#self-hosting">阅读自托管说明 <ArrowRight size={16} class="inline-block align-middle" aria-hidden="true" /></a></div>
       </div>
     </article>
     <article class="card bg-base-300 plan-card">
@@ -16,7 +19,7 @@
         <h3>免费托管</h3>
         <p>聊天机托管免费，运行与维护由我们照看。</p>
         <p>连接自己的 API key，模型费用自付。</p>
-        <div class="card-actions mt-auto"><a class="link" href="/docs/">阅读托管使用指南 →</a></div>
+        <div class="card-actions mt-auto"><a class="link" href="/docs/">阅读托管使用指南 <ArrowRight size={16} class="inline-block align-middle" aria-hidden="true" /></a></div>
       </div>
     </article>
     <article class="card bg-base-100 plan-card">

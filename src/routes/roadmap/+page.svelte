@@ -1,4 +1,7 @@
 <script>
+  import ArrowRight from "lucide-svelte/icons/arrow-right";
+  import Check from "lucide-svelte/icons/check";
+  import Circle from "lucide-svelte/icons/circle";
   import { phases } from '$lib/roadmap';
 </script>
 <svelte:head>
@@ -17,9 +20,9 @@
 <div class="roadmap-list">
   {#each phases as phase}
     <details id={phase.id} class="collapse collapse-plus phase-block" open={phase.id === 'phase-1'}>
-      <summary class="collapse-title"><span class="phase-number">{phase.number}</span><span class="phase-heading"><small>{phase.label}</small><strong>{phase.title}</strong><span class="badge phase-status" class:badge-success={phase.done} class:badge-warning={!phase.done}>{phase.done ? '✓' : '○'} {phase.status}</span></span></summary>
+      <summary class="collapse-title"><span class="phase-number">{phase.number}</span><span class="phase-heading"><small>{phase.label}</small><strong>{phase.title}</strong><span class="badge phase-status" class:badge-success={phase.done} class:badge-warning={!phase.done}><svelte:component this={phase.done ? Check : Circle} size={14} aria-hidden="true" /> {phase.status}</span></span></summary>
       <div class="collapse-content phase-content"><p class="phase-outcome">{phase.outcome}</p><ul>{#each phase.features as feature}<li>{feature}</li>{/each}</ul><p class="phase-note">{phase.note}</p></div>
     </details>
   {/each}
 </div>
-<section class="roadmap-ending"><h2>常用的，我们一起修好。<br />特别的，留给你们决定。</h2><p>聊天机的完整前后端开源，网站与文档也开源。你可以独立部署自己的小家；平台账户管理和工作机实现由我们维护。</p><a href="/letters/to-you/">读读这片群岛为什么开始 →</a></section>
+<section class="roadmap-ending"><h2>常用的，我们一起修好。<br />特别的，留给你们决定。</h2><p>聊天机的完整前后端开源，网站与文档也开源。你可以独立部署自己的小家；平台账户管理和工作机实现由我们维护。</p><a href="/letters/to-you/">读读这片群岛为什么开始 <ArrowRight size={16} class="inline-block align-middle" aria-hidden="true" /></a></section>

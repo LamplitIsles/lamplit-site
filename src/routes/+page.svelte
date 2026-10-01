@@ -1,4 +1,5 @@
 <script>
+  import ChevronRight from "lucide-svelte/icons/chevron-right";
   import Plans from '$lib/Plans.svelte';
   const additions = [
     { icon: '🔎', title: '那句话，你也能找回来', body: '直接全文搜索自己的聊天记录，查看命中内容，再回到当时的上下文。用户搜索界面仍在建设。' },
@@ -19,7 +20,7 @@
     <a class="link self-host-link" href="/guide/#self-hosting">想自己照看？从自托管教程开始</a>
     <details class="collapse group rounded-none max-w-[34em]">
       <summary class="collapse-title flex items-center gap-2 p-0 min-h-11 text-sm font-normal text-secondary">
-        <svg class="size-3 shrink-0 transition-transform group-open:rotate-90 motion-reduce:transition-none" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="m4.5 2.5 3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        <ChevronRight size={12} class="shrink-0 transition-transform group-open:rotate-90 motion-reduce:transition-none" aria-hidden="true" />
         *托管与迁出说明
       </summary>
       <div class="collapse-content p-0 text-sm text-secondary">

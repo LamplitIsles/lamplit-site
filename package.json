@@ -24,6 +24,7 @@
     "wrangler": "^4.142.0"
   },
   "dependencies": {
+    "lucide-svelte": "^1.0.1",
     "marked": "^18.0.14"
   }
 }
