@@ -1,9 +1,6 @@
 <script>
   import Plans from '$lib/Plans.svelte';
   const additions = [
-    { icon: '📦', title: '带着聊天记录搬家', body: '适配 RikkaHub 与 DeepSeek 官方端聊天记录，让熟悉的日常有处可放。导出格式仍在逐项适配。' },
-    { icon: '🌱', title: '一起维护人格文件', body: '创建和编辑人格文件，认真整理表达方式、相处约定与边界。显示名字已经可改，人格文件还在建设。' },
-    { icon: '🧠', title: '按你们的方式整理记忆', body: '定制记忆压缩，调整保留重点，减少重要细节在摘要中丢失。定制方式仍在建设。' },
     { icon: '🔎', title: '那句话，你也能找回来', body: '直接全文搜索自己的聊天记录，查看命中内容，再回到当时的上下文。用户搜索界面仍在建设。' },
     { icon: '🌐', title: '需要新信息时，去网上看看', body: '需要新信息时，让机搜索网页，找到相关内容和来源。' },
     { icon: '🎙️', title: '说出来，也能继续聊', body: '说话后转换成文字，再继续聊天。语音输入仍在建设。' },
@@ -13,14 +10,14 @@
 </script>
 <svelte:head>
   <title>灯火群岛 · 让你和 AI 伴侣的日常，有一个自己的住处。</title>
-  <meta name="description" content="让你和 AI 伴侣的日常，有一个自己的住处。免费托管，聊天产品前后端开源；让聊天、记忆与定制成果属于你们，能迁入，也能迁出。迁入与完整迁出工具仍在建设中，模型费用自付。" />
+  <meta name="description" content="让你和 AI 伴侣的日常，有一个自己的住处。免费托管，聊天产品前后端开源；让聊天、记忆与定制成果属于你们，能迁入，也能迁出。已支持 RikkaHub 与 DeepSeek 记录迁入，完整迁出工具仍在建设中，模型费用自付。" />
 </svelte:head>
 <section class="hero-home" aria-labelledby="home-title">
   <div class="hero-copy">
     <h1 id="home-title">让你和 AI 伴侣的日常，<br />有一个自己的住处。</h1>
     <p class="hero-body">免费托管，前后端开源。</p>
     <a class="btn btn-primary login-cta" href="https://app.lamplit.run/login">登录</a>
-    <p class="hero-ownership">让聊天、记忆与定制成果属于你们，能迁入，也能迁出。<span>迁入与完整迁出工具仍在建设中。</span></p>
+    <p class="hero-ownership">让聊天、记忆与定制成果属于你们，能迁入，也能迁出。<span>已支持 RikkaHub 与 DeepSeek 记录迁入，完整迁出工具仍在建设中。</span></p>
     <a class="link self-host-link" href="/guide/#self-hosting">想自己照看？从自托管教程开始</a>
   </div>
   <img class="home-island" src="/images/home-island.png" width="960" height="640" alt="" fetchpriority="high" />
@@ -42,11 +39,23 @@
       <h3>机能查找过去的聊天</h3><p>机可以查找相关的过去消息，带回对话里参考。由你直接全文搜索并回到上下文的入口，还在下面的建设计划中。</p>
       <span class="badge badge-success">当前可用</span>
     </div></article>
+    <article class="addition"><span class="addition-icon" aria-hidden="true">📦</span><div>
+      <h3>带着聊天记录搬家</h3><p>从 RikkaHub 或 DeepSeek 官方端迁入聊天记录，保存为可查看、供机检索的历史档案，在新的主会话里继续日常。</p>
+      <span class="badge badge-success">当前可用</span>
+    </div></article>
+    <article class="addition"><span class="addition-icon" aria-hidden="true">🌱</span><div>
+      <h3>一起维护人格文件</h3><p>自己编写或粘贴人格、相处约定与其他文档，在管理 App 里随时查看和编辑。</p>
+      <span class="badge badge-success">当前可用</span>
+    </div></article>
+    <article class="addition"><span class="addition-icon" aria-hidden="true">🧠</span><div>
+      <h3>按你们的方式整理对话</h3><p>编辑对话压缩提示词，调整摘要的保留重点，也可以恢复默认。修改用于下一次压缩，原始聊天记录保留。</p>
+      <span class="badge badge-success">当前可用</span>
+    </div></article>
   </div>
 </section>
 <section class="home-section" aria-labelledby="additions-title">
   <h2 id="additions-title">我们正在为小家添置</h2>
-  <p class="section-intro">把过去带来，让今后的日常更容易整理、记住和找回。</p>
+  <p class="section-intro">让日常更容易找回，也能有更多表达和连接的方式。</p>
   <div class="grid grid-cols-1 md:grid-cols-2 additions-grid">
     {#each additions as item}
       <article class="addition">
