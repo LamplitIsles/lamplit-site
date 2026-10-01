@@ -3,8 +3,7 @@
   import Plans from '$lib/Plans.svelte';
   const additions = [
     { icon: '🔎', title: '那句话，你也能找回来', body: '直接全文搜索自己的聊天记录，查看命中内容，再回到当时的上下文。用户搜索界面仍在建设。' },
-    { icon: '🎙️', title: '说出来，也能继续聊', body: '说话后转换成文字，再继续聊天。语音输入仍在建设。' },
-    { icon: '⏰', title: '自动唤醒', body: '让机在合适的时候醒来，主动发起联系。' }
+    { icon: '🔌', title: '通过 MCP 接入工具', body: '连接外部工具与服务，让机能使用更多你们选择的能力。MCP 接入仍在建设中。' }
   ];
 </script>
 <svelte:head>
@@ -67,6 +66,14 @@
     </div></article>
     <article class="addition"><span class="addition-icon" aria-hidden="true">💬</span><div>
       <h3>让机帮你向平台提建议</h3><p>让机代为提交使用建议和遇到的问题，一起改善小家的体验。</p>
+      <span class="badge badge-success">当前可用</span>
+    </div></article>
+    <article class="addition"><span class="addition-icon" aria-hidden="true">🎙️</span><div>
+      <h3>语音转文字</h3><p>说话后转换成文字，再继续聊天。</p>
+      <span class="badge badge-success">当前可用</span>
+    </div></article>
+    <article class="addition"><span class="addition-icon" aria-hidden="true">⏰</span><div>
+      <h3>自动唤醒</h3><p>让机在合适的时候醒来，主动发起联系。</p>
       <span class="badge badge-success">当前可用</span>
     </div></article>
   </div>
