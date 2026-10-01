@@ -2,10 +2,8 @@
   import Plans from '$lib/Plans.svelte';
   const additions = [
     { icon: '🔎', title: '那句话，你也能找回来', body: '直接全文搜索自己的聊天记录，查看命中内容，再回到当时的上下文。用户搜索界面仍在建设。' },
-    { icon: '🌐', title: '需要新信息时，去网上看看', body: '需要新信息时，让机搜索网页，找到相关内容和来源。' },
     { icon: '🎙️', title: '说出来，也能继续聊', body: '说话后转换成文字，再继续聊天。语音输入仍在建设。' },
-    { icon: '⏰', title: '自动唤醒', body: '让机在合适的时候醒来，主动发起联系。' },
-    { icon: '💬', title: '让机帮你向平台提建议', body: '让机代为提交使用建议和遇到的问题，一起改善小家的体验。' }
+    { icon: '⏰', title: '自动唤醒', body: '让机在合适的时候醒来，主动发起联系。' }
   ];
 </script>
 <svelte:head>
@@ -60,6 +58,14 @@
     </div></article>
     <article class="addition"><span class="addition-icon" aria-hidden="true">🧠</span><div>
       <h3>按你们的方式整理对话</h3><p>编辑对话压缩提示词，调整摘要的保留重点，也可以恢复默认。修改用于下一次压缩，原始聊天记录保留。</p>
+      <span class="badge badge-success">当前可用</span>
+    </div></article>
+    <article class="addition"><span class="addition-icon" aria-hidden="true">🌐</span><div>
+      <h3>网页搜索</h3><p>需要新信息时，让机搜索网页，找到相关内容和来源。</p>
+      <span class="badge badge-success">当前可用</span>
+    </div></article>
+    <article class="addition"><span class="addition-icon" aria-hidden="true">💬</span><div>
+      <h3>让机帮你向平台提建议</h3><p>让机代为提交使用建议和遇到的问题，一起改善小家的体验。</p>
       <span class="badge badge-success">当前可用</span>
     </div></article>
   </div>
