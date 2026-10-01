@@ -18,7 +18,7 @@
     <p class="hero-body mb-3!">免费托管，前后端开源*</p>
     <p class="text-sm text-secondary mb-7 max-w-[38em]">*聊天机托管免费，模型费用自付。开源范围为聊天产品前后端，不含平台账户管理与工作机的全部实现。</p>
     <a class="btn btn-primary login-cta" href="https://app.lamplit.run/login">登录</a>
-    <p class="hero-ownership">让聊天、记忆与定制成果属于你们，是我们想落实的方向。<span>已支持 RikkaHub 与 DeepSeek 聊天记录迁入；完整备份与迁出工具仍在建设中。</span></p>
+    <p class="hero-ownership">让聊天、记忆与定制成果属于你们，能迁入，也能迁出。<span>已支持 RikkaHub 与 DeepSeek 聊天记录迁入。我们承诺支持免费迁出，以及聊天、记忆和相关备份的永久删除，相关功能仍在开发中。</span></p>
     <a class="link self-host-link" href="/guide/#self-hosting">想自己照看？从自托管教程开始</a>
   </div>
   <img class="home-island" src="/images/home-island.png" width="960" height="640" alt="" fetchpriority="high" />
