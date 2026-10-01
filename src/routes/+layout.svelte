@@ -19,6 +19,6 @@
   <main id="main">{@render children()}</main>
   <footer class="footer sm:footer-horizontal site-footer">
     <div><a class="brand" href="/">灯火群岛 <span aria-hidden="true">✦</span></a><p>愿每一次回来，都有光。</p></div>
-    <nav aria-label="页脚导航"><a href="/guide/">安家手记</a><a href="/docs/">使用指南</a><a href="/roadmap/">建设图</a><a href="https://github.com/LamplitIsles/lamplit-chat">开源仓库</a><a href="/guide/#self-hosting">自托管说明</a></nav>
+    <nav aria-label="页脚导航"><a href="/guide/">安家手记</a><a href="/docs/">使用指南</a><a href="/roadmap/">建设图</a><a href="https://github.com/LamplitIsles/lamplit-chat">开源仓库</a><a href="/guide/#self-hosting">自托管说明</a><a href="/docs/privacy/">托管数据说明</a></nav>
   </footer>
 </div>

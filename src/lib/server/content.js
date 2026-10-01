@@ -47,6 +47,13 @@ export const pages = [
     group: "使用指南",
     description: "托管版的使用说明与建设进度。",
   },
+  {
+    path: "docs/privacy",
+    file: "docs/privacy",
+    title: "托管数据说明",
+    group: "使用指南",
+    description: "托管服务保存的数据、必要处理与用途承诺。",
+  },
 ];
 export function article(path) {
   const page = pages.find((p) => p.path === path);

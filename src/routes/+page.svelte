@@ -10,14 +10,15 @@
 </script>
 <svelte:head>
   <title>灯火群岛 · 让你和 AI 伴侣的日常，有一个自己的住处。</title>
-  <meta name="description" content="让你和 AI 伴侣的日常，有一个自己的住处。免费托管，聊天产品前后端开源；让聊天、记忆与定制成果属于你们，能迁入，也能迁出。已支持 RikkaHub 与 DeepSeek 记录迁入，完整迁出工具仍在建设中，模型费用自付。" />
+  <meta name="description" content="让你和 AI 伴侣的日常，有一个自己的住处。免费托管，聊天产品前后端开源；已支持 RikkaHub 与 DeepSeek 聊天记录迁入；完整备份与迁出工具仍在建设中，模型费用自付。" />
 </svelte:head>
 <section class="hero-home" aria-labelledby="home-title">
   <div class="hero-copy">
     <h1 id="home-title">让你和 AI 伴侣的日常，<br />有一个自己的住处。</h1>
-    <p class="hero-body">免费托管，前后端开源。</p>
+    <p class="hero-body mb-3!">免费托管，前后端开源*</p>
+    <p class="text-sm text-secondary mb-7 max-w-[38em]">*聊天机托管免费，模型费用自付。开源范围为聊天产品前后端，不含平台账户管理与工作机的全部实现。</p>
     <a class="btn btn-primary login-cta" href="https://app.lamplit.run/login">登录</a>
-    <p class="hero-ownership">让聊天、记忆与定制成果属于你们，能迁入，也能迁出。<span>已支持 RikkaHub 与 DeepSeek 记录迁入，完整迁出工具仍在建设中。</span></p>
+    <p class="hero-ownership">让聊天、记忆与定制成果属于你们，是我们想落实的方向。<span>已支持 RikkaHub 与 DeepSeek 聊天记录迁入；完整备份与迁出工具仍在建设中。</span></p>
     <a class="link self-host-link" href="/guide/#self-hosting">想自己照看？从自托管教程开始</a>
   </div>
   <img class="home-island" src="/images/home-island.png" width="960" height="640" alt="" fetchpriority="high" />
@@ -25,7 +26,7 @@
 <section class="card available-panel" aria-labelledby="available-title">
   <div class="card-body">
     <h2 id="available-title"><span aria-hidden="true">🏡</span> 先住下来，慢慢聊</h2>
-    <div><p class="availability">当前可用</p><p>邮箱登录，连接自己的模型，进入个人空间。<br />管理与聊天双 App。<br />显示名字、头像、主题与背景，由你选择。<br />聊天 App 可自由定制；完整前端定制仍在建设中。</p></div>
+    <div><p class="availability">当前可用</p><p>邮箱登录，连接自己的模型，进入个人空间。<br />管理与聊天双 App。<br />当前可调整显示名字、头像、主题与背景；完整前端定制仍在建设中。</p></div>
   </div>
 </section>
 <section class="home-section" aria-labelledby="ready-title">
@@ -67,7 +68,7 @@
 </section>
 <section class="home-section" aria-labelledby="helpers-title">
   <h2 id="helpers-title">想做点特别的小东西？</h2>
-  <p class="section-intro">聊天 App 可自由定制。完整前端定制仍在建设中：让聊天机委派一位开发助手，做工具、改前端、调试与添能力。</p>
+  <p class="section-intro">当前可调整显示名字、头像、主题与背景；完整前端定制仍在建设中。我们希望让聊天机委派一位开发助手，做工具、改前端、调试与添能力。</p>
   <div class="grid grid-cols-1 md:grid-cols-2 helper-grid">
     <article class="card helper-card bg-base-300"><div class="card-body">
       <h3><span aria-hidden="true">🧰</span> 让 Lamplit 工作机来帮忙</h3>
