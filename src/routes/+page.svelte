@@ -15,11 +15,21 @@
 <section class="hero-home" aria-labelledby="home-title">
   <div class="hero-copy">
     <h1 id="home-title">让你和 AI 伴侣的日常，<br />有一个自己的住处。</h1>
-    <p class="hero-body mb-3!">免费托管，前后端开源*</p>
-    <p class="text-sm text-secondary mb-7 max-w-[38em]">*聊天机托管免费，模型费用自付。开源范围为聊天产品前后端，不含平台账户管理与工作机的全部实现。</p>
+    <p class="hero-body">免费托管，前后端开源*</p>
     <a class="btn btn-primary login-cta" href="https://app.lamplit.run/login">登录</a>
-    <p class="hero-ownership">让聊天、记忆与定制成果属于你们，能迁入，也能迁出。<span>已支持 RikkaHub 与 DeepSeek 聊天记录迁入。我们承诺支持免费迁出，以及聊天、记忆和相关备份的永久删除，相关功能仍在开发中。</span></p>
+    <p class="hero-ownership">让聊天、记忆与定制成果属于你们，能迁入，也能迁出。</p>
     <a class="link self-host-link" href="/guide/#self-hosting">想自己照看？从自托管教程开始</a>
+    <details class="collapse group rounded-none max-w-[34em]">
+      <summary class="collapse-title flex items-center gap-2 p-0 min-h-11 text-sm font-normal text-secondary">
+        <svg class="size-3 shrink-0 transition-transform group-open:rotate-90 motion-reduce:transition-none" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="m4.5 2.5 3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        *托管与迁出说明
+      </summary>
+      <div class="collapse-content p-0 text-sm text-secondary">
+        <p>聊天机托管免费，模型费用自付。开源范围为聊天产品前后端，不含平台账户管理与工作机的全部实现。</p>
+        <p>已支持 RikkaHub 与 DeepSeek 聊天记录迁入。我们承诺支持免费迁出，以及聊天、记忆和相关备份的永久删除，相关功能仍在开发中。</p>
+        <p><a class="link" href="/docs/privacy/">了解托管数据说明</a></p>
+      </div>
+    </details>
   </div>
   <img class="home-island" src="/images/home-island.png" width="960" height="640" alt="" fetchpriority="high" />
 </section>
