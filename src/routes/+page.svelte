@@ -52,7 +52,7 @@
       <span class="badge badge-success">当前可用</span>
     </div></article>
     <article class="addition"><span class="addition-icon" aria-hidden="true">📦</span><div>
-      <h3>带着聊天记录搬家</h3><p>从 RikkaHub 或 DeepSeek 官方端迁入聊天记录，保存为可查看、供机检索的历史档案，在新的主会话里继续日常。</p>
+      <h3>带着聊天记录搬家</h3><p>从 RikkaHub、DeepSeek 或 Operit 迁入聊天记录，保存为可查看、供机检索的历史档案，在新的主会话里继续日常。</p>
       <span class="badge badge-success">当前可用</span>
     </div></article>
     <article class="addition"><span class="addition-icon" aria-hidden="true">🌱</span><div>
@@ -75,8 +75,12 @@
       <h3>语音转文字</h3><p>说话后转换成文字，再继续聊天。</p>
       <span class="badge badge-success">当前可用</span>
     </div></article>
+    <article class="addition"><span class="addition-icon" aria-hidden="true">📖</span><div>
+      <h3>翻翻日记，收好照片</h3><p>按日期翻看机留下的日记，在聊天相册里查看图片、保存原图。</p>
+      <span class="badge badge-success">当前可用</span>
+    </div></article>
     <article class="addition"><span class="addition-icon" aria-hidden="true">⏰</span><div>
-      <h3>自动唤醒</h3><p>让机在合适的时候醒来，主动发起联系。</p>
+      <h3>自动唤醒</h3><p>让机在合适的时候醒来，主动联系。想安排提醒，也可以在聊天里告诉机，再到提醒列表查看。</p>
       <span class="badge badge-success">当前可用</span>
     </div></article>
   </div>
