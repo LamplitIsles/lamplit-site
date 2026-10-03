@@ -15,7 +15,8 @@ bun run build
 - `/letters/to-you/`、`/letters/to-companions/`：分别写给人和 AI 伴侣的信。
 - `/guide/`：安家手记，已接入搬家准备与记忆入门。
 - `/roadmap/`：建设图：开源自托管、Phase 1 迁入与托管体验、Phase 2 可选开发助手和后续规划。
-- `/downloads/`：安装包下载，入口仅在页脚；首个资源为 Intiface Central Android 官方 APK。
+- `/downloads/`：安装包下载，入口仅在页脚；首个资源为 Intiface Central Android 官方 APK，教程入口指向本站中文图文指南。
+- `/guide/intiface-central/`：Intiface Central 中文入门，包含官方界面截图、蓝牙扫描与测试、状态解释和排错；不表示灯火群岛已接入设备控制。
 - `/docs/`：托管版文档入口，当前可用能力与建设边界的使用概览。
 - `/docs/privacy/`：当前托管数据保存、必要处理与用途承诺，使用指南、文章目录和页脚均有入口。
 
@@ -95,3 +96,7 @@ wc -c "$DOWNLOADED_APK"
 ## 许可证
 
 官网源码采用 [Apache-2.0](LICENSE)，与 lamplit-chat 一致。第三方依赖保留各自许可证。
+
+## Intiface 中文入门维护
+
+`content/guide/intiface-central.md` 为按官方流程重新组织的中文操作指南，不是逐字翻译或官方中文文档。下载页的教程入口只链接本站页面，原英文文档放在教程末尾作来源。截图原样保存在 `static/images/intiface-central/`，通过文章图片链接查看原图；布局保持等比缩放，移动端不横向溢出。更新正文时同时核对当前设置和品牌文档，不复用旧教程已停止支持的 Lovense Connect / HID Dongle 路径。来源、固定上游版本和文件校验记录见 `docs/IMPORTS.md`。

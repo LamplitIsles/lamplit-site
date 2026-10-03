@@ -34,6 +34,7 @@
     <div class="col-start-1 row-start-2 flex flex-col gap-2 md:col-start-2 md:row-start-1 md:min-w-52 md:pt-1">
       <a class="btn btn-primary" href={resource.downloadUrl}><Download size={18} aria-hidden="true" />下载 APK</a>
       <p class="m-0 text-center text-xs text-secondary">官方原版 · 灯火群岛镜像</p>
+      <a class="btn btn-outline mt-2" href="/guide/intiface-central/">中文图文教程 <ChevronRight size={16} aria-hidden="true" /></a>
       <div class="flex flex-wrap justify-center gap-x-5 text-sm text-secondary">
         <a class="link inline-flex min-h-11 items-center" href={resource.websiteUrl}>官方网站</a>
         <a class="link inline-flex min-h-11 items-center" href={resource.releaseUrl}>发布来源</a>

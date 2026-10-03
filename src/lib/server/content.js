@@ -41,6 +41,13 @@ export const pages = [
     description: "理解聊天记录、上下文与记忆。",
   },
   {
+    path: "guide/intiface-central",
+    file: "guide/intiface-central",
+    title: "Intiface Central 入门",
+    group: "安家手记",
+    description: "带截图的中文入门指南：安装 Intiface Central、开启蓝牙、扫描设备并测试连接。",
+  },
+  {
     path: "docs",
     file: "docs/welcome",
     title: "住在灯火群岛",
