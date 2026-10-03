@@ -2,7 +2,6 @@
   import ChevronRight from "lucide-svelte/icons/chevron-right";
   import Plans from '$lib/Plans.svelte';
   const additions = [
-    { icon: '🔎', title: '那句话，你也能找回来', body: '直接全文搜索自己的聊天记录，查看命中内容，再回到当时的上下文。用户搜索界面仍在建设。' },
     { icon: '🔌', title: '通过 MCP 接入工具', body: '连接外部工具与服务，让机能使用更多你们选择的能力。MCP 接入仍在建设中。' }
   ];
 </script>
@@ -45,7 +44,11 @@
       <span class="badge badge-success">当前可用</span>
     </div></article>
     <article class="addition"><span class="addition-icon" aria-hidden="true">🔎</span><div>
-      <h3>机能查找过去的聊天</h3><p>机可以查找相关的过去消息，带回对话里参考。由你直接全文搜索并回到上下文的入口，还在下面的建设计划中。</p>
+      <h3>机能查找过去的聊天</h3><p>机可以查找相关的过去消息，带回对话里参考。</p>
+      <span class="badge badge-success">当前可用</span>
+    </div></article>
+    <article class="addition"><span class="addition-icon" aria-hidden="true">🔎</span><div>
+      <h3>那句话，你也能找回来</h3><p>直接全文搜索自己的聊天记录，查看命中内容，再回到当时的上下文。</p>
       <span class="badge badge-success">当前可用</span>
     </div></article>
     <article class="addition"><span class="addition-icon" aria-hidden="true">📦</span><div>
@@ -80,7 +83,7 @@
 </section>
 <section class="home-section" aria-labelledby="additions-title">
   <h2 id="additions-title">我们正在为小家添置</h2>
-  <p class="section-intro">让日常更容易找回，也能有更多表达和连接的方式。</p>
+  <p class="section-intro">连接更多外部工具与服务，为小家添上你们选择的能力。</p>
   <div class="grid grid-cols-1 md:grid-cols-2 additions-grid">
     {#each additions as item}
       <article class="addition">

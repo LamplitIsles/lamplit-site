@@ -6,7 +6,7 @@
 </script>
 <svelte:head>
   <title>群岛建设图 · 灯火群岛</title>
-  <meta name="description" content="免费托管与开源自托管当前可用。聊天记录迁入、人格文件编辑与定制对话压缩已可用；用户搜索和可选开发助手仍在建设。" />
+  <meta name="description" content="免费托管与开源自托管当前可用。聊天记录迁入、用户全文搜索、人格文件编辑与定制对话压缩已可用；Phase 1 仅 MCP 接入仍在建设，可选开发助手也仍在建设。" />
 </svelte:head>
 <section class="roadmap-heading">
   <p class="eyebrow">LAMPLIT ISLES / ROADMAP</p>
