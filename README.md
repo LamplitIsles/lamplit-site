@@ -93,6 +93,63 @@ wc -c "$DOWNLOADED_APK"
 
 如需重建域名，先检查现有绑定再执行 `bunx wrangler r2 bucket domain add lamplit-assets --domain assets.lamplit.run --zone-id 074e6fe5605fc4aed9e34979a915b9cd --min-tls 1.2 -c wrangler.jsonc`。Wrangler 无 null-script route 管理子命令；通过 Cloudflare Workers Routes API `POST /zones/074e6fe5605fc4aed9e34979a915b9cd/workers/routes` 提交 `{"pattern":"assets.lamplit.run/*"}` 可重建排除，先 GET 确认不存在，使用现有授权凭据且不输出凭据，不替换整个路由集合。资源托管不等于官网部署；官网合入与部署另行执行。
 
+### 2026-10-10 Android 下载维护
+
+Spec FlickNote #3624 在现有列表新增两个固定版本，仍手动更新，无新增依赖。Intiface 及中文教程保持原入口。
+
+| 软件 / 官方文件 | 固定发布 | 日期（UTC） | 字节数 / SHA-256 |
+| --- | --- | --- | --- |
+| Cromite 浏览器 ARM64 / `arm64_ChromePublic.apk` | `v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a` | 2026-09-15 | 323809949 / `9db12af1af021f42b4371e76d0e9fe476a7085bbbbc76bc410a538d028bf6071` |
+| Element Classic GPlay ARM64 / `vector-gplay-arm64-v8a-release-signed.apk` | `v1.6.66` | 2026-09-25 | 73983375 / `9c605d17b3f2517119ea95bb0b55f5e2d582bbe7b2b1c72934e0fe9a0675d66d` |
+
+来源分别为 [Cromite 固定发布](https://github.com/uazo/cromite/releases/tag/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a) 与 [Element Android 固定发布](https://github.com/element-hq/element-android/releases/tag/v1.6.66)。两个官方 APK 已完整下载，size / SHA-256 与 GitHub asset digest 一致。Element 固定版本 [README](https://github.com/element-hq/element-android/blob/v1.6.66/README.md) 明确 GitHub APK 为 GPlay 变体，依赖部分 Google 服务；这是 Classic 仓库，不是 Element X。
+
+源码与许可核对范围：
+
+- Cromite 官方 tag ZIP 原样镜像为 `cromite-patches-and-build.zip`，包含补丁、补丁顺序、GN 参数与构建脚本；它不是完整 Chromium 源码。固定版本 [build/RELEASE](https://github.com/uazo/cromite/blob/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a/build/RELEASE) 为 `153.0.8010.37`。[对应 Chromium tag](https://chromium.googlesource.com/chromium/src/+/refs/tags/153.0.8010.37) 指向 `b75a5a95ea1a1b55bdbfd6d9f42d47be7507fb8b`，tag metadata 与 DEPS 已读取；[官方基础源码 tar.xz](https://commondatastorage.googleapis.com/chromium-browser-official/chromium-153.0.8010.37.tar.xz) HEAD 为 200、4121949812 字节，范围 GET 为 206、XZ 文件。此 4.12 GB 归档未完整下载或镜像。页面在主下载旁分别提供补丁 ZIP、基础源码和[固定构建说明](https://github.com/uazo/cromite/blob/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a/docs/HOW_TO_BUILD.md)；构建脚本按该 tag fetch，再用 gclient 同步 DEPS。没有在本次重建 APK 或验证全部依赖，不宣称补丁 ZIP 独自满足完整源码分发。固定 README 声明 GPLv3，Bromite 补丁 GPLv3-only，Cromite 特有补丁 GPL-2+，以各补丁文件为准；镜像 `LICENSE` 从该 ZIP 原样提取。
+- Element `element-classic-v1.6.66-source.zip` 来自官方 `https://codeload.github.com/element-hq/element-android/zip/refs/tags/v1.6.66`，包含应用、Matrix SDK、Gradle 构建配置和依赖声明；`LICENSE` 原样提取。固定 README 声明 AGPLv3 或更高版本／商业双许可，ZIP 也保留 `LICENSE-COMMERCIAL`，没有按旧 Apache 许可描述此版本。未修改官方 APK、源码或许可，也没有声称已重现官方签名构建。
+
+新对象只写入现有 `lamplit-assets` 的版本路径：
+
+- `downloads/cromite/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a/`：`cromite-arm64-apk.zip`、`cromite-patches-and-build.zip`、`LICENSE`；不提供未上传的原始 APK 镜像 URL。
+- `downloads/element-classic/1.6.66/`：`vector-gplay-arm64-v8a-release-signed.apk`、`element-classic-v1.6.66-source.zip`、`LICENSE`。
+
+上传前用 `wrangler r2 object get --remote --file <临时目标> -c wrangler.jsonc` 确认具体 key 不存在；其他错误必须停止，已有对象不可覆盖。不要对未上传路径做公开 HEAD 预检：此次 Cromite 补丁路径的 HEAD 产生 404 负缓存，页面使用独立验证的 `?download=1` URL，未清缓存或改变规则。上传沿用上述 Content-Type / Content-Disposition / immutable 元数据；完整公开 GET 必须比对原文件字节、size 和 SHA-256，保存响应头，不把 ETag 当校验值。Cromite 官方 APK 超过 Wrangler 300 MiB（314572800 字节）上限，因此按用户确认以单一原 APK 的 ZIP 分发；未改 APK 内部内容或签名，不需要新凭据或上传服务。
+
+Cromite 主下载为 `cromite-arm64-apk.zip`：136605705 字节（130.28 MiB），SHA-256 `8c116cabddbf60973554fc1480f4de8a64eb937045cec590c693a5a7a92a7100`。该 ZIP 校验值与 GitHub 官方 APK digest 是两个不同值；表中仍记录内部官方 APK。页面按钮“下载 ZIP”，紧邻“解压后安装 APK”，列表展示 ZIP 大小，详情分别列出 ZIP 和内部 APK 的文件名、字节数与完整 SHA-256。Element 与 Intiface 继续直接下载 APK。
+
+打包使用现有 Python 标准库，ZIP DEFLATE level 9，只收一个官方 APK；每次重新打包后都须重新记录 ZIP 的大小与校验值（ZIP 元数据会影响其校验值），不能复用旧 ZIP digest：
+
+```python
+from pathlib import Path
+import hashlib, zipfile
+
+# 所有文件都在本次工作目录中，保留已核对的官方原包。
+apk = Path(".scratch/android-downloads/arm64_ChromePublic.apk")
+archive = Path(".scratch/android-downloads/cromite-arm64-apk.zip")
+with zipfile.ZipFile(archive, "x", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+    z.write(apk, arcname=apk.name)
+assert archive.stat().st_size < 314572800
+print(archive.stat().st_size, hashlib.sha256(archive.read_bytes()).hexdigest())
+# 上传后先完整公开回下载 ZIP，并与此 archive 逐字节核对。
+# public_zip 是已回下载的本地文件；完整读取会同时校验 ZIP CRC。
+public_zip = Path(".scratch/android-downloads/cromite-public.zip")
+with zipfile.ZipFile(public_zip) as z:
+    assert z.namelist() == [apk.name]
+    h = hashlib.sha256()
+    size = 0
+    with z.open(apk.name) as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            size += len(chunk)
+            h.update(chunk)
+    assert size == 323809949
+    assert h.hexdigest() == "9db12af1af021f42b4371e76d0e9fe476a7085bbbbc76bc410a538d028bf6071"
+```
+
+ZIP 上传仍使用上述新 key 预检与 Wrangler 命令，`--content-type application/zip`、`--content-disposition 'attachment; filename="cromite-arm64-apk.zip"'`、现有 immutable 缓存。公开完整 GET 验证为 200、136605705 字节、正确 MIME/下载文件名/缓存头；解压流的大小/SHA-256/CRC 均通过。Element APK、两个源码 ZIP 和两个许可对象亦完整公开回下载并与各自原文件逐字节核对。
+
+校验、来源快照、本地 320/390/1440px 折叠与展开截图、键盘焦点和教程检查保存在 `.scratch/android-downloads/`，维护交付报告为 `implementation-report.md`；这些文件不入 Git。官网尚未部署，DNS、routes、bucket settings 保持原配置。
+
 ## 许可证
 
 官网源码采用 [Apache-2.0](LICENSE)，与 lamplit-chat 一致。第三方依赖保留各自许可证。

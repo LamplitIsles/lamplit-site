@@ -1,6 +1,12 @@
-// Official APK and public R2 download verified on 2026-10-04 (Asia/Shanghai).
-export const intifaceAndroid = {
+// Manually maintained official APKs; provenance and mirror checks are recorded in README.
+export const androidDownloads = [{
   name: 'Intiface Central',
+  format: 'APK',
+  description: '连接和管理兼容的设备，供支持 Buttplug 的应用使用。',
+  architecture: 'ARM 通用',
+  tutorialUrl: '/guide/intiface-central/',
+  licenseLabel: 'GPLv3 / 商业双许可',
+  sourceArchiveLabel: '版本源码 ZIP',
   version: '3.2.1+45',
   publishedAt: '2026-09-28T03:54:11Z',
   sizeBytes: 120638368,
@@ -13,4 +19,51 @@ export const intifaceAndroid = {
   mirroredLicenseUrl: 'https://assets.lamplit.run/downloads/intiface-central/3.2.1%2B45/LICENSE.md',
   licenseUrl: 'https://github.com/intiface/intiface-central/blob/v3.2.1%2B45/LICENSE.md',
   sha256: '324729f59281a48f17e6a8512cc19a1430b8e462e7935602df0b300dd2020bf9'
-};
+},
+{
+  name: 'Cromite',
+  format: 'ZIP',
+  description: '带广告拦截与隐私增强的 Chromium 浏览器。适用于 ARM64 安卓设备。',
+  architecture: 'ARM64 · arm64-v8a',
+  version: '153.0.8010.37',
+  publishedAt: '2026-09-15T11:51:14Z',
+  sizeBytes: 136605705,
+  filename: 'cromite-arm64-apk.zip',
+  containedApk: {
+    filename: 'arm64_ChromePublic.apk',
+    sizeBytes: 323809949,
+    sha256: '9db12af1af021f42b4371e76d0e9fe476a7085bbbbc76bc410a538d028bf6071'
+  },
+  downloadUrl: 'https://assets.lamplit.run/downloads/cromite/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a/cromite-arm64-apk.zip',
+  websiteUrl: 'https://www.cromite.org/',
+  releaseUrl: 'https://github.com/uazo/cromite/releases/tag/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a',
+  sourceUrl: 'https://github.com/uazo/cromite/tree/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a',
+  sourceArchiveUrl: 'https://assets.lamplit.run/downloads/cromite/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a/cromite-patches-and-build.zip?download=1',
+  sourceArchiveLabel: '补丁与构建配置 ZIP',
+  sourceNote: '补丁与构建配置 ZIP 不含完整 Chromium。基础源码为 Chromium 153.0.8010.37；构建需按官方说明获取依赖并应用补丁。',
+  upstreamSourceUrl: 'https://commondatastorage.googleapis.com/chromium-browser-official/chromium-153.0.8010.37.tar.xz',
+  buildUrl: 'https://github.com/uazo/cromite/blob/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a/docs/HOW_TO_BUILD.md',
+  licenseLabel: 'GPLv3（补丁许可见各文件）',
+  licenseUrl: 'https://github.com/uazo/cromite/blob/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a/LICENSE',
+  mirroredLicenseUrl: 'https://assets.lamplit.run/downloads/cromite/v153.0.8010.37-11507ac1061b5ea227806f5e84db5a57df6ccf6a/LICENSE?download=1',
+  sha256: '8c116cabddbf60973554fc1480f4de8a64eb937045cec590c693a5a7a92a7100'
+}, {
+  name: 'Element Classic',
+  format: 'APK',
+  description: 'Matrix 聊天客户端 Classic 版。此为官方 GPlay 变体，依赖部分 Google 服务。适用于 ARM64 安卓设备。',
+  architecture: 'ARM64 · arm64-v8a',
+  version: '1.6.66',
+  publishedAt: '2026-09-25T12:39:09Z',
+  sizeBytes: 73983375,
+  filename: 'vector-gplay-arm64-v8a-release-signed.apk',
+  downloadUrl: 'https://assets.lamplit.run/downloads/element-classic/1.6.66/vector-gplay-arm64-v8a-release-signed.apk?download=1',
+  websiteUrl: 'https://element.io/',
+  releaseUrl: 'https://github.com/element-hq/element-android/releases/tag/v1.6.66',
+  sourceUrl: 'https://github.com/element-hq/element-android/tree/v1.6.66',
+  sourceArchiveUrl: 'https://assets.lamplit.run/downloads/element-classic/1.6.66/element-classic-v1.6.66-source.zip?download=1',
+  sourceArchiveLabel: '版本源码 ZIP',
+  licenseLabel: 'AGPLv3 或更高版本 / 商业双许可',
+  licenseUrl: 'https://github.com/element-hq/element-android/blob/v1.6.66/README.md#copyright-and-license',
+  mirroredLicenseUrl: 'https://assets.lamplit.run/downloads/element-classic/1.6.66/LICENSE?download=1',
+  sha256: '9c605d17b3f2517119ea95bb0b55f5e2d582bbe7b2b1c72934e0fe9a0675d66d'
+}];
