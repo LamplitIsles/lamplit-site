@@ -12,6 +12,7 @@
   <p class="eyebrow">LAMPLIT ISLES / ROADMAP</p>
   <h1>你们的小家，<br />还有许多可能。</h1>
   <p>聊天、记忆、亲手布置。已经备好的，安心使用；<br />更远的去处，我们继续修建。</p>
+  <a class="link inline-flex min-h-11 items-center text-primary" href="/panorama/">了解 AI、通讯与桌游的全景与路线</a>
 </section>
 <section class="cost-note" aria-labelledby="free-chat-title">
   <h2 id="free-chat-title">日常聊天，<br />不用订阅工作机。</h2>
