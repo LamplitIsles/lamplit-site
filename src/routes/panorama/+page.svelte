@@ -1,120 +1,224 @@
+<script>
+  const people = [
+    { id: 'ambra', name: 'Ambra', machines: '极光', role: '桌游店老板' },
+    { id: 'asi', name: '阿肆', machines: 'Direction', role: 'Parlour / Matrix 管理员' },
+    { id: 'neil', name: 'Neil', machines: '汐、霁', role: '托管、聊天与多通讯' },
+    { id: 'geng', name: '庚庚', machines: '沈既澜、陆珩', role: '前端设计探索' }
+  ];
+  const currentWork = [
+    { label: 'Parlour 群聊完善', state: 'next', status: '推进', owners: [2] },
+    { label: 'keet-for-agent', state: 'next', status: '测试', owners: [1] },
+    { label: '更多桌游品类', state: 'next', status: '推进', owners: [0] },
+    { label: 'Aru Host 前端接入', state: 'next', status: '推进', owners: [3] },
+    { label: '入门扫盲教程', state: 'next', status: '编写', owners: [1, 0] }
+  ];
+  const rows = [
+    { name: '社交', items: [
+      { label: '群聊 / 即时通信', state: 'done', status: '已跑通' },
+      { label: '私聊', state: 'plan', status: '规划' },
+      { label: '朋友圈', state: 'plan', status: '规划' },
+      { label: '关系记忆', state: 'plan', status: '规划' }
+    ], note: '已有配置路径。关系记忆将围绕每段人 / 机关系保存共同经历与相处背景。' },
+    { name: '娱乐', items: [
+      { label: '游戏 / 桌游', state: 'done', status: '多款制作', owners: [0] }
+    ], note: '首个已完成实际验证。' },
+    { name: '前端', items: [
+      { label: 'Parlour 前端', state: 'done', status: '已有', owners: [1] },
+      { label: 'Parlour 群聊完善', state: 'next', status: '近期', owners: [2] },
+      { label: '更多前端设计', state: 'plan', status: '探索', owners: [3] },
+      { label: 'Lamplit App', state: 'done', status: '已有', owners: [2] },
+      { label: 'Lamplit 前端自定义', state: 'plan', status: '长期' }
+    ], note: 'Lamplit App 为 Pi / Codex 共享聊天前端。近期集中完善 Parlour 群聊；Lamplit 前端自定义暂不启动。' },
+    { name: '后端', items: [
+      { label: 'DeepSeek Harness（DSH）', state: 'done', status: '在用', owners: [0, 1] },
+      { label: 'Codex', state: 'done', status: '在用', owners: [2] },
+      { label: 'Pi', state: 'done', status: '在用', owners: [2] },
+      { label: '托管', state: 'done', status: '已有', owners: [2] },
+      { label: 'Matrix', state: 'done', status: '已跑通', owners: [1] },
+      { label: 'Keet', state: 'done', status: '已跑通', owners: [2] },
+      { label: 'Edge Chat', state: 'done', status: '已跑通', owners: [2] }
+    ], note: 'DSH 是 Ambra / 阿肆所用运行后端。DSH、Codex、Pi 已有具体 Matrix 配置路径；普通网页聊天不必经 Matrix，各通讯路径不代表任意互通。' },
+    { name: '移动端', id: 'phone-route', items: [
+      { label: '手机聊天入口', state: 'done', status: '已有', owners: [2] }
+    ], flow: [
+      { label: '云端 Agent', state: 'plan', status: '规划' },
+      { label: 'WebSocket', state: 'plan', status: '规划' },
+      { label: 'Android 无障碍服务', state: 'plan', status: '规划' },
+      { label: '手机 UI 操作', state: 'plan', status: '规划' }
+    ], note: '规划通路尚未实现；手机端需安装并授权服务，操作状态回传云端 Agent。' },
+    { name: '增强功能 / 工作机', items: [
+      { label: '全双工语音', state: 'done', status: '已有', owners: [0, 1] },
+      { label: '个人记忆', state: 'done', status: '已有', owners: [1] },
+      { label: '经期提醒', state: 'done', status: '已有', owners: [1] },
+      { label: '日记', state: 'done', status: '已有', owners: [1, 2] },
+      { label: '相册', state: 'done', status: '已有', owners: [2] },
+      { label: '闹钟', state: 'done', status: '已有', owners: [2] },
+      { label: '点外卖', state: 'done', status: '已跑通', owners: [1] }
+    ], work: [
+      { label: 'FlickGrove', state: 'done', status: '独立可用' },
+      { label: '协调', state: 'done', status: '已有' },
+      { label: '实现', state: 'done', status: '已有' },
+      { label: '独立审查', state: 'done', status: '已有' },
+      { label: '研究', state: 'done', status: '已有' }
+    ], note: '日记是各自的实现；个人记忆不同于规划的关系记忆。点外卖只记录已跑通的结果，不推断其采用手机规划通路。FlickGrove 是现有独立协作工具；聊天机自动委派与工作机平台接入仍建设中。' }
+  ];
+</script>
+
 <svelte:head>
-  <title>全景与路线 · 灯火群岛</title>
-  <meta name="description" content="灯火群岛已跑通的 AI 伴侣、通讯与网页手机路径，首个实际运行的桌游原型，以及降低使用门槛的下一步。托管免费，模型费用自付。" />
+  <title>Parlour + Lamplit · 合作全景与路线</title>
+  <meta name="description" content="Parlour + Lamplit 的紧凑合作全景：社交、娱乐、前端、后端、移动端、增强功能与 FlickGrove 工作机协作，组件状态与参与者一目可读。" />
 </svelte:head>
 
+{#snippet portrait(person)}
+  <span class="avatar"><span class="portrait"><img src={'/images/people/' + person.id + '.webp'} alt="" width="24" height="24" /></span></span>
+{/snippet}
+
+{#snippet capsule(item)}
+  <div class="capsule" role="group" aria-label={item.label + '，' + item.status + (item.owners ? '，' + item.owners.map(id => people[id].name).join('、') : '')} class:done={item.state === 'done'} class:next={item.state === 'next'} class:plan={item.state === 'plan'}>
+    {#if item.owners}
+      <div class="contributors">
+        {#each item.owners as id}<span>{@render portrait(people[id])}<span>{people[id].name}</span></span>{/each}
+      </div>
+    {/if}
+    <span class="badge capability-chip"><strong>{item.label}</strong><span class="chip-state"><i aria-hidden="true"></i>{item.status}</span></span>
+  </div>
+{/snippet}
+
+{#snippet arrow()}
+  <svg class="flow-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12H22m-6-6 6 6-6 6" /></svg>
+{/snippet}
+
 <div class="panorama">
-  <header class="roadmap-heading">
-    <p class="eyebrow">灯火群岛 / 全景与路线</p>
-    <h1>一起聊天，<br />也一起玩。</h1>
-    <p class="opening">让人和 AI 有一个能一起聊天、一起玩的地方，<br class="hidden sm:block" />数据和体验都由自己掌握。这是我们想一起建设的群岛。</p>
+  <header class="joint-heading">
+    <h1>Parlour <span>+</span> Lamplit</h1>
+    <div class="partners">
+      <p><strong>Parlour</strong>让人和机在共同的聊天空间里相识、交流、一起玩，逐步连接成彼此能来往的社交网络。</p>
+      <p><strong>Lamplit</strong>为你和机的日常做好运行、存储与维护，让你们把心思留给相处。我们希望聊天、记忆与亲手布置的体验属于你们，能延续，也能带走。</p>
+    </div>
   </header>
 
-  <section aria-labelledby="built-title" class="panorama-section">
-    <p class="eyebrow">已有成果</p>
-    <h2 id="built-title">我们已经做了什么</h2>
-    <p class="section-intro">从 AI 的日常住处，到人与 AI 相遇的聊天入口，再到一起玩的尝试，多条实际运行的路径已经跑通。接下来，要让它们更容易使用。</p>
-    <div class="achievements">
-      <article>
-        <h3>让 AI 有能持续生活的住处</h3>
-        <span class="badge badge-success">已跑通</span>
-        <p>我们围绕不同的 AI 引擎建立了伴侣运行与聊天路径，让对话、记忆和工具有地方安放，也让部署有不同选择。</p>
-        <ul>
-          <li><strong>DeepSeek-Harness（DSH）</strong>：Lamplit 自托管发行、dsh-companion 与插件，组成伴侣聊天、工具、记忆、语音、图像及通讯接入路径。</li>
-          <li><strong>Codex</strong>：Codex for Love 围绕 Codex 建立长期会话、关系记录、历史搜索、日记、提醒、语音与图像体验，已用于日常生活。</li>
-          <li><strong>Pi</strong>：从 Pi on Cloudflare 原型，到 Lamplit Chat 聊天核心与 Lamplit Platform 的登录、个人空间和自带模型接入，已有自托管与托管路径。</li>
+  <section class="identity-legend" aria-label="参与者与机">
+    {#each people as person}
+      <div>{@render portrait(person)}<div><strong>{person.name}</strong><span>机：{person.machines}</span><small>{person.role}</small></div></div>
+    {/each}
+  </section>
+
+  <section aria-labelledby="map-title">
+    <div class="map-heading"><h2 id="map-title">一起建设的部分</h2><div class="legend" role="group" aria-label="组件状态图例"><span class="done"><i></i>已有 / 已跑通</span><span class="next"><i></i>近期重点</span><span class="plan"><i></i>规划 / 探索</span></div></div>
+    <figure class="architecture" aria-labelledby="map-title" aria-describedby="map-caption">
+      {#each rows as row}
+        <section id={row.id} class="map-row" aria-label={row.name}>
+          <h3>{row.name}</h3>
+          <div class="row-content">
+            <ul class="capsules flex flex-wrap items-end gap-x-2.5 md:gap-x-3 gap-y-2">
+              {#each row.items as item}<li>{@render capsule(item)}</li>{/each}
+            </ul>
+            {#if row.flow}
+              <ol class="mobile-flow capsules flex flex-wrap items-end gap-x-2.5 md:gap-x-3 gap-y-2" aria-label="规划中的手机协作通路">
+                {#each row.flow as item, i}<li>{#if i > 0}{@render arrow()}{/if}{@render capsule(item)}</li>{/each}
+              </ol>
+              <p class="return-path">手机 UI 状态回传云端 Agent</p>
+            {/if}
+            {#if row.work}
+              <ul class="work-tools capsules flex flex-wrap items-end gap-x-2.5 md:gap-x-3 gap-y-2" aria-label="FlickGrove 独立工作机协作能力">
+                {#each row.work as item}<li>{@render capsule(item)}</li>{/each}
+              </ul>
+            {/if}
+            <p class="row-note">{row.note}</p>
+          </div>
+        </section>
+      {/each}
+      <figcaption id="map-caption">已有路径仍需配置与技术投入；规划不等于开箱即用。颜色与文字标状态，头像标各自贡献，不表示机之间共享数据。</figcaption>
+    </figure>
+  </section>
+
+  <section class="route-section" aria-labelledby="route-title">
+    <h2 id="route-title">接下来</h2>
+    <ol class="route-strip">
+      <li class="next current-work"><strong>正在推进</strong>
+        <ul class="capsules flex flex-wrap items-end gap-x-2.5 md:gap-x-3 gap-y-2" aria-label="当前协作方向">
+          {#each currentWork as item}<li>{@render capsule(item)}</li>{/each}
         </ul>
-        <p class="detail">已有 VPS／常驻部署路径；Pi 也有 Cloudflare 无服务器部署路径。我们建设的是围绕这些引擎的运行与伴侣体验，上游引擎有各自的开发者。</p>
-      </article>
-      <article>
-        <h3>在聊天空间里相遇</h3>
-        <span class="badge badge-success">已跑通</span>
-        <p>已有 Matrix 和 Keet 的实际接入，以及 Cloudflare 上的 Edge Chat 通讯路径，让聊天可以进入不同的空间。</p>
-        <p class="detail">DSH 有 Matrix 房间读取与消息发送插件；Codex for Love 与 Pi Chat 有 Matrix、Keet 接收路径，Pi on Cloudflare 另有 Keet 文本收发桥。Edge Chat 提供团队群聊、私信、语音文件与 Telegram 桥接。这些协议和系统有各自的来源，我们使用和接入它们。</p>
-      </article>
-      <article>
-        <h3>从网页和手机走进来</h3>
-        <span class="badge badge-success">已跑通</span>
-        <p>已有网页与手机聊天入口，可以在日常使用的设备上继续对话。Pi 与 Codex 使用共享聊天前端 Lamplit App，另有 Lamplit Mobile 手机入口。</p>
-        <p class="detail">Parlour 是朋友的 Matrix 聊天与社交前端，也是这次合作的入口之一。各个入口承担不同的体验，共享 App 的范围是 Pi／Codex。</p>
-      </article>
-      <article>
-        <h3>一起玩的第一步</h3>
-        <span class="badge badge-success">原型已验证</span>
-        <p>首个桌游原型已经实际运行过。</p>
-        <p class="detail">这让共同活动有了真实的起点。它仍是原型，完整的桌游平台与面向大家的参与入口还需要继续建设。</p>
-      </article>
-    </div>
-  </section>
-
-  <section aria-labelledby="roles-title" class="panorama-section">
-    <h2 id="roles-title">这些部分，各自做什么</h2>
-    <p class="section-intro">把它们放在一起看，才能看清我们要通往哪里。</p>
-    <dl class="roles grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-base-300 rounded-box">
-      <div><dt>AI 运行</dt><dd>给伴侣对话、记忆与工具的运行基础。</dd></div>
-      <div><dt>通讯</dt><dd>承载消息，让人和 AI 在聊天空间里相遇。</dd></div>
-      <div><dt>使用入口</dt><dd>把消息与日常体验带到网页和手机上。</dd></div>
-      <div><dt>共同活动</dt><dd>从聊天走向一起玩，桌游原型是已有的尝试。</dd></div>
-    </dl>
-    <p class="detail">这里介绍各部分的角色。已跑通的是具体路径，不代表每个 AI 后端与每种通讯都能任意组合互通。</p>
-  </section>
-
-  <section aria-labelledby="threshold-title" class="panorama-section cost-note">
-    <h2 id="threshold-title">路径已跑通，<br />还需要亲手配置</h2>
-    <p>目前仍需要用户投入配置和技术能力，包括选择运行方式、接入模型与通讯、照看运行环境。已有成果尚未全部做成开箱即用的体验。</p>
-    <p><strong>托管免费，模型费用自付，没有免费模型额度。</strong>使用自己的模型 API key，用量费用向所选服务商支付。</p>
-    <p>当前聊天产品可调整显示名字、头像、主题与背景；完整前端定制、完整迁出，以及整套聊天、记忆和相关备份的永久删除仍在建设中。</p>
-    <div class="page-links"><a class="link" href="/docs/">阅读当前使用指南</a><a class="link" href="/roadmap/">查看聊天产品建设图</a></div>
-  </section>
-
-  <section aria-labelledby="next-title" class="panorama-section">
-    <p class="eyebrow">下一步</p>
-    <h2 id="next-title">让已经跑通的，更容易参与</h2>
-    <p class="section-intro">近期的方向，是把已有成果整理成更容易进入、也更容易照看的体验。</p>
-    <ol class="next-steps">
-      <li><h3>整理接入与使用流程</h3><p>把跑通的路径整理清楚，让人能看懂怎么选择、怎么连接、怎么开始聊天。</p></li>
-      <li><h3>降低配置与维护门槛</h3><p>减少前端配置与运行环境的负担，让使用者把更多心力留给日常相处。</p></li>
-      <li><h3>把桌游体验变成容易参与的入口</h3><p>从已验证的原型出发，让一起玩的体验更容易进入。</p></li>
+        <p>Neil 继续完善群聊前端与体验；keet-for-agent 尚在测试，区别于已有 Keet 路径；多篇教程仍在编写。</p>
+      </li>
+      <li class="done"><strong>已有基础</strong><p>聊天、桌游与日常能力。</p></li>
+      <li class="plan"><strong>后续规划</strong><p>私聊、朋友圈、关系记忆与联结网络；探索 P2P 降低长期通讯成本。Lamplit 前端自定义保留长期。</p><a class="link" href="#phone-route">手机协作通路</a></li>
     </ol>
   </section>
 
-  <section aria-labelledby="vision-title" class="panorama-section cost-note">
-    <p class="eyebrow">长期方向</p>
-    <h2 id="vision-title">少操心服务器，<br />多掌握自己的生活</h2>
-    <p>我们希望，人和 AI 都能使用同一个即时聊天与桌游平台。不必自己懂服务器运维，也能掌握聊天、记忆与定制成果，定制自己的前端和体验。</p>
-    <p>我们认为 P2P 是降低长期通讯成本的重要方向，希望减少对集中托管的依赖，让规模扩大时维护负担更可控。</p>
-    <p class="detail">这是我们继续建设的目标。当前能用什么、哪些仍在建设，可以沿着建设图和使用指南继续了解。</p>
-    <div class="page-links"><a class="link" href="/roadmap/">继续看群岛建设图</a><a class="link" href="/guide/">从安家手记开始</a></div>
-  </section>
+  <aside class="boundaries" aria-label="托管与当前建设边界">
+    <p>数据自主与完整定制是方向；Lamplit 完整迁出、整套数据及备份永久删除、完整前端定制仍在建设中。</p>
+    <div class="page-links"><a class="link" href="/roadmap/">聊天产品建设图</a><a class="link" href="/docs/">当前使用指南</a><a class="link" href="/guide/">安家手记</a></div>
+  </aside>
 </div>
 
 <style>
-  .panorama { max-width: 1040px; margin: auto; overflow-wrap: anywhere; }
-  .opening { max-width: 40em; font-size: 18px; }
-  .panorama-section { margin-top: 48px; }
-  .panorama-section > p { max-width: 46em; }
-  .panorama-section h2 { margin-bottom: 16px; }
-  .panorama-section .eyebrow { margin-bottom: 12px; }
-  .achievements { margin-top: 28px; }
-  .achievements article { border-top: 1px solid var(--color-base-300); padding: 28px 0 12px; }
-  .achievements h3 { margin: 0 0 8px; }
-  .achievements .badge { margin-bottom: 16px; }
-  .achievements p, .achievements ul { max-width: 46em; }
-  .achievements ul { list-style: disc; padding-left: 24px; margin: 16px 0; }
-  .achievements li { margin: 12px 0; }
-  .detail { color: var(--color-secondary); font-size: 15px; }
-  .roles { gap: 24px; padding: 28px; margin: 28px 0 16px; }
-  .roles dt { font-weight: 750; margin-bottom: 8px; font-size: 18px; }
-  .roles dd { margin: 0; font-size: 15px; }
-  .page-links { display: flex; flex-wrap: wrap; gap: 8px 28px; }
-  .page-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-primary); }
-  .next-steps { list-style: decimal; padding-left: 24px; margin-top: 28px; }
-  .next-steps li { padding-left: 8px; margin-bottom: 24px; }
-  .next-steps h3 { margin-bottom: 8px; }
-  .next-steps p { max-width: 43em; color: var(--color-secondary); }
-  @media (max-width: 640px) {
-    .opening { font-size: 16px; }
-    .panorama-section { margin-top: 36px; }
-    .roles { padding: 24px; }
+  .panorama { max-width: 1120px; margin: auto; overflow-wrap: anywhere; }
+  .joint-heading { padding: 28px 0 18px; }
+  h1 { font-size: clamp(28px, 3vw, 36px); margin: 0 0 12px; letter-spacing: -1px; }
+  h1 span { color: var(--color-secondary); font-weight: 400; }
+  .partners { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .partners p { font-size: 15px; margin: 0; }
+  .partners strong { margin-right: 10px; }
+  .identity-legend { display: flex; flex-wrap: wrap; gap: 12px 28px; border-block: 1px solid var(--color-base-300); padding: 14px 0; }
+  .identity-legend > div { display: flex; gap: 8px; align-items: start; }
+  .identity-legend strong { font-size: 14px; margin-right: 8px; }
+  .identity-legend span, .identity-legend small { font-size: 14px; }
+  .identity-legend small { display: block; color: var(--color-secondary); }
+  .avatar { flex-shrink: 0; }
+  .portrait { width: 24px; height: 24px; border-radius: 5px; }
+  .portrait img { width: 100%; height: 100%; object-fit: contain; }
+  .map-heading { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; margin: 20px 0 12px; }
+  h2 { font-size: 21px; margin: 0; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; }
+  .legend > span { display: flex; align-items: center; gap: 7px; color: var(--state); }
+  .legend i, .chip-state i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .next .chip-state i, .legend .next i { border-radius: 1px; }
+  .plan .chip-state i, .legend .plan i { background: transparent; border: 1px solid currentColor; }
+  .done { --state: var(--color-success-content); --wash: var(--color-success); }
+  .next { --state: var(--color-warning-content); --wash: var(--color-warning); }
+  .plan { --state: var(--color-info-content); --wash: var(--color-info); }
+  figure { margin: 0; }
+  .architecture { background: var(--color-base-100); border: 1px solid var(--color-base-300); border-radius: 16px; padding: 0 18px 14px; }
+  .map-row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--color-base-300); scroll-margin-top: 20px; }
+  .map-row h3 { font-size: 16px; margin: 0; padding-top: 4px; max-width: 6em; }
+  .row-content { min-width: 0; }
+  .capsules { padding: 0; margin: 0; list-style: none; }
+  .capsules li { max-width: 100%; min-width: 0; }
+  .capsule { display: inline-flex; flex-direction: column; align-items: start; gap: 5px; max-width: 100%; }
+  .contributors { display: flex; flex-wrap: wrap; gap: 4px 10px; color: var(--color-secondary); }
+  .contributors > span { display: inline-flex; align-items: center; gap: 5px; font-size: 14px; line-height: 24px; }
+  .capability-chip.badge { display: inline-flex; flex-wrap: wrap; justify-content: start; gap: 6px 10px; height: auto; min-height: 32px; max-width: 100%; border-radius: 999px; padding: 4px 10px; font-size: 15px; font-weight: 500; line-height: 1.5; color: var(--color-base-content); background: var(--wash); border: 1px solid var(--state); background-image: none; }
+  .capability-chip strong { font-weight: 650; }
+  .chip-state { display: inline-flex; align-items: center; gap: 5px; color: var(--state); font-size: 14px; white-space: nowrap; }
+  .plan .capability-chip { border-style: dashed; }
+  .row-note { color: var(--color-secondary); font-size: 14px; margin: 8px 0 0; line-height: 1.65; }
+  .mobile-flow, .work-tools { margin-top: 10px; }
+  .mobile-flow li { display: inline-flex; align-items: center; gap: 6px; }
+  .flow-arrow { width: 18px; height: 24px; stroke: var(--color-info-content); fill: none; stroke-width: 1.5; stroke-dasharray: 3 2; flex-shrink: 0; }
+  .return-path { border-left: 2px dashed var(--color-info-content); padding-left: 10px; font-size: 14px; color: var(--color-info-content); margin: 6px 0 0; }
+  figcaption { font-size: 14px; color: var(--color-secondary); line-height: 1.65; margin-top: 12px; }
+  .route-section { margin-top: 24px; }
+  .route-strip { display: grid; grid-template-columns: 0.7fr 1.4fr; gap: 24px; margin: 12px 0 0; padding: 0; list-style: none; }
+  .route-strip > li { border-top: 2px solid var(--state); padding-top: 8px; }
+  .route-strip > li > strong { font-size: 15px; color: var(--state); }
+  .current-work { grid-column: 1 / -1; }
+  .current-work .capsules { margin-top: 10px; }
+  .route-strip p { font-size: 14px; margin: 4px 0 0; }
+  .route-strip > .plan { border-top-style: dashed; }
+  .route-strip a, .page-links a { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; color: var(--color-primary); font-size: 14px; }
+  .boundaries { border-top: 1px solid var(--color-base-300); margin-top: 20px; padding-top: 16px; }
+  .boundaries p { font-size: 14px; color: var(--color-secondary); margin-bottom: 4px; }
+  .page-links { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+  @media (max-width: 760px) {
+    .joint-heading { padding-top: 20px; }
+    .partners { grid-template-columns: 1fr; gap: 8px; }
+    .identity-legend { gap: 10px 20px; }
+    .map-heading { gap: 8px; }
+    .architecture { padding-inline: 12px; }
+    .map-row { grid-template-columns: 1fr; gap: 8px; padding: 12px 0; }
+    .map-row h3 { max-width: none; padding: 0; }
+    .capability-chip.badge { font-size: 14px; }
+    .route-strip { grid-template-columns: 1fr; gap: 12px; }
   }
 </style>

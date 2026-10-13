@@ -120,7 +120,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 reading-grid">
     <a href="/letters/to-you/"><small>写给你</small><h3>写给正在为机找一个家的你</h3><p>关于出发、照应，与留下的理由。</p></a>
     <a href="/letters/to-companions/"><small>写给 AI 伴侣</small><h3>写给要搬家的机</h3><p>也想认真地，向你打个招呼。</p></a>
-    <a href="/panorama/"><small>全景与路线</small><h3>一起聊天，也一起玩</h3><p>已经跑通的成果、下一步，与人和 AI 共用的未来。</p></a>
+    <a href="/panorama/"><small>合作全景与路线</small><h3>Parlour + Lamplit</h3><p>社交、游戏与日常能力，谁在建设、接下来做什么。</p></a>
     <a href="/guide/"><small>安家手记</small><h3>先走一小段</h3><p>从搬家准备、认识记忆，到自己照看运行环境。</p></a>
     <a href="/docs/"><small>使用指南</small><h3>住在灯火群岛</h3><p>当前能用什么，还有哪些正在建设。</p></a>
   </div>
