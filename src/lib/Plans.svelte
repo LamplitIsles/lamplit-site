@@ -24,7 +24,7 @@
     </article>
     <article class="card bg-base-100 plan-card">
       <div class="card-body">
-        <h3>可选开发能力 <span class="text-xs font-normal text-secondary">规划中</span></h3>
+        <h3>可选开发能力 <span class="text-sm font-normal text-secondary">规划中</span></h3>
         <p class="plan-price">¥45 <span>/ 3个月</span></p>
         <p>计划75折，常规价 ¥60 / 3个月。</p>
         <p>做工具、改前端、调试与增强。</p>

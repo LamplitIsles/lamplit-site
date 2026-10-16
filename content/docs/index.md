@@ -1,4 +1,4 @@
-# 住在灯火群岛
+# 住在 Lamplit
 
 Lamplit 使用指南。
 

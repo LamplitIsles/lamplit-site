@@ -86,7 +86,7 @@
 
 ## 来源与进一步阅读
 
-本页由灯火群岛整理中文操作说明，截图来自 Nonpolynomial / Intiface 官方文档，保留原界面。它不是官方中文文档，也不提供设备兼容保证。
+本页由 Lamplit 整理中文操作说明，截图来自 Nonpolynomial / Intiface 官方文档，保留原界面。它不是官方中文文档，也不提供设备兼容保证。
 
 - [原入门教程 Quick(ish)start](https://intiface.com/docs/intiface-central/quickstart/)：入门流程与本文截图出处。
 - [引擎控制栏](https://intiface.com/docs/intiface-central/ui/engine-control-panel/)与[设备面板](https://intiface.com/docs/intiface-central/ui/devices-panel/)：当前按钮、状态与功能说明。

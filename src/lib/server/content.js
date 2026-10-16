@@ -50,7 +50,7 @@ export const pages = [
   {
     path: "docs",
     file: "docs/welcome",
-    title: "住在灯火群岛",
+    title: "住在 Lamplit",
     group: "使用指南",
     description: "托管版的使用说明与建设进度。",
   },

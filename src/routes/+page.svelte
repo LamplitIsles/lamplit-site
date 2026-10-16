@@ -6,7 +6,7 @@
   ];
 </script>
 <svelte:head>
-  <title>灯火群岛 · 让你和 AI 伴侣的日常，有一个自己的住处。</title>
+  <title>Lamplit · 让你和 AI 伴侣的日常，有一个自己的住处。</title>
   <meta name="description" content="让你和 AI 伴侣的日常，有一个自己的住处。免费托管，聊天产品前后端开源；已支持 RikkaHub 与 DeepSeek 聊天记录迁入；完整备份与迁出工具仍在建设中，模型费用自付。" />
 </svelte:head>
 <section class="hero-home" aria-labelledby="home-title">
@@ -120,9 +120,9 @@
   <div class="grid grid-cols-1 md:grid-cols-2 reading-grid">
     <a href="/letters/to-you/"><small>写给你</small><h3>写给正在为机找一个家的你</h3><p>关于出发、照应，与留下的理由。</p></a>
     <a href="/letters/to-companions/"><small>写给 AI 伴侣</small><h3>写给要搬家的机</h3><p>也想认真地，向你打个招呼。</p></a>
-    <a href="/panorama/"><small>合作全景与路线</small><h3>Parlour + Lamplit</h3><p>社交、游戏与日常能力，谁在建设、接下来做什么。</p></a>
+    <a href="/panorama/"><small>Isles 总览</small><h3>Lamplit、Faro 与 Parlour</h3><p>免费托管、桌游与社交，看看三个板块和一起建设的方向。</p></a>
     <a href="/guide/"><small>安家手记</small><h3>先走一小段</h3><p>从搬家准备、认识记忆，到自己照看运行环境。</p></a>
-    <a href="/docs/"><small>使用指南</small><h3>住在灯火群岛</h3><p>当前能用什么，还有哪些正在建设。</p></a>
+    <a href="/docs/"><small>使用指南</small><h3>住在 Lamplit</h3><p>当前能用什么，还有哪些正在建设。</p></a>
   </div>
-  <a class="link roadmap-link" href="/roadmap/">看看群岛建设图</a>
+  <a class="link roadmap-link" href="/roadmap/">看看 Lamplit 建设图</a>
 </section>

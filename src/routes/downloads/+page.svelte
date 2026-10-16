@@ -5,12 +5,12 @@
 </script>
 
 <svelte:head>
-  <title>下载 · 灯火群岛</title>
+  <title>下载 · Lamplit</title>
   <meta name="description" content="下载 Intiface Central、Cromite 和 Element Classic 官方安卓安装包，查看版本、文件大小、发布来源与 SHA-256 校验信息。" />
 </svelte:head>
 
 <section class="pt-9 pb-8 md:pt-15 md:pb-10" aria-labelledby="downloads-title">
-  <p class="eyebrow">LAMPLIT ISLES / DOWNLOADS</p>
+  <p class="eyebrow">Lamplit / 下载</p>
   <h1 id="downloads-title" class="mb-4 text-4xl md:text-5xl">下载</h1>
   <p class="mb-0 text-secondary">一些安装包，放在这里方便取用。</p>
 </section>
@@ -36,7 +36,7 @@
         {#if resource.containedApk}
           <p class="m-0 text-center text-sm font-semibold">解压后安装 APK</p>
         {/if}
-        <p class="m-0 text-center text-xs text-secondary">官方原版 · 灯火群岛镜像</p>
+        <p class="m-0 text-center text-sm text-secondary">官方原版 · Lamplit 镜像</p>
         {#if resource.tutorialUrl}
           <a class="btn btn-outline mt-2" href={resource.tutorialUrl}>中文图文教程 <ChevronRight size={16} aria-hidden="true" /></a>
         {/if}

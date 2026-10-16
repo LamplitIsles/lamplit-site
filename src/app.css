@@ -55,7 +55,7 @@ a:hover { text-decoration: underline; }
   border-radius: 4px;
 }
 .btn { min-height: 48px; height: auto; font-size: 16px; }
-.badge { height: auto; min-height: 30px; padding: 4px 14px; font-size: 13px; font-weight: 650; }
+.badge { height: auto; min-height: 30px; padding: 4px 14px; font-size: 14px; font-weight: 650; }
 .shell { max-width: 1320px; margin: auto; padding: 0 60px; }
 .masthead { min-height: 100px; padding: 0; gap: 24px; justify-content: space-between; }
 .brand { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 23px; font-weight: 750; flex-shrink: 0; }
@@ -75,7 +75,7 @@ a:hover { text-decoration: underline; }
 .available-panel .card-body { display: grid; grid-template-columns: 0.9fr 1.4fr; align-items: center; gap: 28px; padding: 32px; }
 .available-panel h2 { font-size: 25px; }
 .available-panel p { color: var(--color-secondary); margin: 0; }
-.available-panel .availability { color: var(--color-success-content); font-size: 13px; font-weight: 650; margin-bottom: 8px; }
+.available-panel .availability { color: var(--color-success-content); font-size: 14px; font-weight: 650; margin-bottom: 8px; }
 .home-section { margin-top: 76px; }
 .section-intro { color: var(--color-secondary); margin: 12px 0 0; max-width: 48em; }
 .additions-grid { gap: 40px 64px; margin-top: 48px; }
@@ -97,6 +97,7 @@ a:hover { text-decoration: underline; }
 .plan-boundary { margin: 16px 0 0; color: var(--color-secondary); font-size: 15px; max-width: 65em; }
 .reading-grid { gap: 0 48px; margin-top: 24px; }
 .reading-grid a { border-bottom: 1px solid var(--color-base-300); padding: 24px 0; }
+.reading-grid small { font-size: 14px; }
 .reading-grid small, .reading-grid p { color: var(--color-secondary); }
 .reading-grid h3 { margin: 8px 0; }
 .reading-grid p { margin: 0; }
@@ -105,7 +106,7 @@ a:hover { text-decoration: underline; }
 .site-footer .brand { color: var(--color-base-content); font-size: 18px; }
 .site-footer p { margin: 0; font-size: 14px; }
 .site-footer nav { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 14px; }
-.eyebrow { color: var(--color-secondary); font-size: 13px; margin-bottom: 20px; }
+.eyebrow { color: var(--color-secondary); font-size: 14px; margin-bottom: 20px; }
 .article-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; padding: 48px 0 0; }
 .article-layout aside { align-self: start; }
 .article-layout .menu { width: 100%; padding: 0; font-size: 15px; }
@@ -118,7 +119,7 @@ a:hover { text-decoration: underline; }
 .prose-content h2 { font-size: 25px; margin: 40px 0 16px; }
 .prose-content h3 { font-size: 21px; margin: 28px 0 12px; }
 .prose-content p { margin: 0 0 22px; }
-.prose-content a { color: var(--color-primary); text-decoration: underline; }
+.prose-content a { display: inline-block; min-height: 44px; min-width: 44px; color: var(--color-primary); text-decoration: underline; }
 .prose-content ul, .prose-content ol { padding-left: 24px; margin: 16px 0 24px; }
 .prose-content ul { list-style: disc; }
 .prose-content ol { list-style: decimal; }
@@ -143,6 +144,7 @@ a:hover { text-decoration: underline; }
 .phase-content { padding: 0 28px 28px; color: var(--color-secondary); }
 .phase-outcome { font-size: 18px; color: var(--color-base-content); }
 .phase-content ul { list-style: disc; padding-left: 24px; margin: 24px 0; }
+.collapse-content a, .cost-note a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
 .phase-content li { margin: 12px 0; }
 .phase-note { border-top: 1px solid var(--color-base-300); padding-top: 20px; margin-bottom: 0; font-size: 15px; }
 .roadmap-ending { padding: 60px 0 0; max-width: 48em; }
@@ -160,12 +162,12 @@ a:hover { text-decoration: underline; }
   .shell { padding: 0 24px; }
   .masthead { display: block; min-height: 0; padding: 16px 0; }
   .brand { font-size: 20px; }
-  .masthead nav { justify-content: start; gap: 0 16px; font-size: 13px; margin-top: 4px; }
+  .masthead nav { justify-content: start; gap: 0 16px; font-size: 14px; margin-top: 4px; }
   .hero-home { grid-template-columns: 1fr; padding: 36px 0 40px; gap: 32px; }
   .hero-copy h1 { font-size: clamp(24px, 7vw, 38px); letter-spacing: -0.5px; margin-bottom: 20px; }
   .hero-body { font-size: 16px; margin-bottom: 28px; max-width: 19em; }
   .login-cta { width: 100%; }
-  .self-host-link { font-size: 13px; }
+  .self-host-link { font-size: 14px; }
   .home-island { max-width: 380px; justify-self: center; }
   .available-panel .card-body { grid-template-columns: 1fr; gap: 20px; padding: 24px; }
   .available-panel h2 { font-size: 22px; }

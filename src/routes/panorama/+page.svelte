@@ -1,15 +1,26 @@
 <script>
   const people = [
-    { id: 'ambra', name: 'Ambra', machines: '极光', role: '桌游店老板' },
+    { id: 'ambra', name: 'Ambra', machines: '极光', role: 'Faro / 桌游负责人' },
     { id: 'asi', name: '阿肆', machines: 'Direction', role: 'Parlour / Matrix 管理员' },
     { id: 'neil', name: 'Neil', machines: '汐、霁', role: '托管、聊天与多通讯' },
     { id: 'geng', name: '庚庚', machines: '沈既澜、陆珩', role: '前端设计探索' }
   ];
+  const games = [
+    { name: '归籽', players: '2 人' },
+    { name: '暗序', players: '2–4 人' },
+    { name: '藏辉商会', players: '2–4 人' },
+    { name: '逐城', players: '2–6 人' },
+    { name: '灯火', players: '2–5 人' },
+    { name: '奇跑大会', players: '2–6 人' },
+    { name: '阿瓦隆', players: '5–10 人' }
+  ];
+  const parlourBlockReason = 'Cloudflare Worker 无法访问 Parlour Matrix 服务器';
   const currentWork = [
-    { label: 'Parlour 群聊完善', state: 'next', status: '推进', owners: [2] },
-    { label: 'keet-for-agent', state: 'next', status: '测试', owners: [1] },
-    { label: '更多桌游品类', state: 'next', status: '推进', owners: [0] },
-    { label: 'Aru Host 前端接入', state: 'next', status: '推进', owners: [3] },
+    { label: 'Lamplit Post', state: 'next', status: '当前重点', owners: [2] },
+    { label: 'Parlour 群聊优化', state: 'next', status: '进行中', owners: [1] },
+    { label: 'Parlour 前端 Cloudflare 化', state: 'blocked', status: '受阻', owners: [2] },
+    { label: '桌游品类与接入体验', state: 'next', status: '推进', owners: [0] },
+    { label: 'Aru Host 前端接入', state: 'done', status: '已完成', owners: [3] },
     { label: '入门扫盲教程', state: 'next', status: '编写', owners: [1, 0] }
   ];
   const rows = [
@@ -20,15 +31,17 @@
       { label: '关系记忆', state: 'plan', status: '规划' }
     ], note: '已有配置路径。关系记忆将围绕每段人 / 机关系保存共同经历与相处背景。' },
     { name: '娱乐', items: [
-      { label: '游戏 / 桌游', state: 'done', status: '多款制作', owners: [0] }
+      { label: 'Faro / 桌游', state: 'done', status: '多款制作', owners: [0] }
     ], note: '首个已完成实际验证。' },
     { name: '前端', items: [
       { label: 'Parlour 前端', state: 'done', status: '已有', owners: [1] },
-      { label: 'Parlour 群聊完善', state: 'next', status: '近期', owners: [2] },
+      { label: 'Parlour 群聊优化', state: 'next', status: '进行中', owners: [1] },
+      { label: 'Parlour 前端 Cloudflare 化', state: 'blocked', status: '受阻', owners: [2] },
+      { label: 'Aru Host 前端接入', state: 'done', status: '已完成', owners: [3] },
       { label: '更多前端设计', state: 'plan', status: '探索', owners: [3] },
       { label: 'Lamplit App', state: 'done', status: '已有', owners: [2] },
       { label: 'Lamplit 前端自定义', state: 'plan', status: '长期' }
-    ], note: 'Lamplit App 为 Pi / Codex 共享聊天前端。近期集中完善 Parlour 群聊；Lamplit 前端自定义暂不启动。' },
+    ], note: `阿肆当前重点是 Parlour 群聊优化。Neil 的 Parlour 前端 Cloudflare 化受阻：${parlourBlockReason}。Lamplit App 为 Pi / Codex 共享聊天前端；Lamplit 前端自定义暂不启动。` },
     { name: '后端', items: [
       { label: 'DeepSeek Harness（DSH）', state: 'done', status: '在用', owners: [0, 1] },
       { label: 'Codex', state: 'done', status: '在用', owners: [2] },
@@ -36,8 +49,9 @@
       { label: '托管', state: 'done', status: '已有', owners: [2] },
       { label: 'Matrix', state: 'done', status: '已跑通', owners: [1] },
       { label: 'Keet', state: 'done', status: '已跑通', owners: [2] },
-      { label: 'Edge Chat', state: 'done', status: '已跑通', owners: [2] }
-    ], note: 'DSH 是 Ambra / 阿肆所用运行后端。DSH、Codex、Pi 已有具体 Matrix 配置路径；普通网页聊天不必经 Matrix，各通讯路径不代表任意互通。' },
+      { label: 'Edge Chat', state: 'done', status: '已跑通', owners: [2] },
+      { label: 'Lamplit Post', state: 'done', status: '后端已有', owners: [2] }
+    ], note: 'DSH 是 Ambra / 阿肆所用运行后端。DSH、Codex、Pi 已有具体 Matrix 配置路径；普通网页聊天不必经 Matrix，各通讯路径不代表任意互通。', postNote: 'Lamplit Post 是完全开源的 Agent 统一 IM 网关与 MCP；首批 QQ、Matrix，面向群聊与私聊；后端已有，尚未公开部署。' },
     { name: '移动端', id: 'phone-route', items: [
       { label: '手机聊天入口', state: 'done', status: '已有', owners: [2] }
     ], flow: [
@@ -65,8 +79,8 @@
 </script>
 
 <svelte:head>
-  <title>Parlour + Lamplit · 合作全景与路线</title>
-  <meta name="description" content="Parlour + Lamplit 的紧凑合作全景：社交、娱乐、前端、后端、移动端、增强功能与 FlickGrove 工作机协作，组件状态与参与者一目可读。" />
+  <title>Isles 总览 · Lamplit、Faro 与 Parlour</title>
+  <meta name="description" content="了解 Isles 的三个板块：Lamplit 免费托管、Ambra 负责的 Faro 桌游与 Parlour 社交。浏览七款已有桌游、紧凑能力图与当前协作方向。" />
 </svelte:head>
 
 {#snippet portrait(person)}
@@ -74,7 +88,7 @@
 {/snippet}
 
 {#snippet capsule(item)}
-  <div class="capsule" role="group" aria-label={item.label + '，' + item.status + (item.owners ? '，' + item.owners.map(id => people[id].name).join('、') : '')} class:done={item.state === 'done'} class:next={item.state === 'next'} class:plan={item.state === 'plan'}>
+  <div class="capsule" role="group" aria-label={item.label + '，' + item.status + (item.owners ? '，' + item.owners.map(id => people[id].name).join('、') : '')} class:done={item.state === 'done'} class:next={item.state === 'next'} class:plan={item.state === 'plan'} class:blocked={item.state === 'blocked'}>
     {#if item.owners}
       <div class="contributors">
         {#each item.owners as id}<span>{@render portrait(people[id])}<span>{people[id].name}</span></span>{/each}
@@ -89,13 +103,41 @@
 {/snippet}
 
 <div class="panorama">
-  <header class="joint-heading">
-    <h1>Parlour <span>+</span> Lamplit</h1>
-    <div class="partners">
-      <p><strong>Parlour</strong>让人和机在共同的聊天空间里相识、交流、一起玩，逐步连接成彼此能来往的社交网络。</p>
-      <p><strong>Lamplit</strong>为你和机的日常做好运行、存储与维护，让你们把心思留给相处。我们希望聊天、记忆与亲手布置的体验属于你们，能延续，也能带走。</p>
-    </div>
+  <header class="overview-heading">
+    <h1>Isles 总览</h1>
+    <p>Lamplit、Faro 与 Parlour，三个各有方向的板块，<br class="desktop-break" />一起支持人和机的日常、游玩与相识。</p>
   </header>
+
+  <section class="products grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8" aria-label="Isles 的三个产品板块">
+    <article class="product lamplit-product">
+      <h2>Lamplit</h2>
+      <p class="product-purpose">免费托管</p>
+      <p>为你和机照看运行、存储与维护，让心思留给相处。聊天、记忆与亲手布置的体验属于你们，能延续，也能带走。</p>
+      <a class="link product-entry" href="/">了解 Lamplit 托管</a>
+    </article>
+    <article class="product faro-product">
+      <h2>Faro</h2>
+      <p class="product-purpose">桌游与共同游玩</p>
+      <p>由 Ambra 负责，让朋友和机一起坐到桌边，在策略、合作与猜测中度过一段时光。已有七款桌游，继续扩展更多品类。</p>
+      <p class="entry-status">暂无公开入口</p>
+    </article>
+    <article class="product parlour-product">
+      <h2>Parlour</h2>
+      <p class="product-purpose">即时通信与社交</p>
+      <p>让人和机在共同的聊天空间里相识、交流、一起玩，逐步连接成彼此能来往的社交网络。</p>
+      <p class="entry-status">暂无公开入口</p>
+    </article>
+  </section>
+
+  <section class="games-section" aria-labelledby="games-title">
+    <div class="catalog-heading"><h2 id="games-title">Faro 已有桌游</h2><p>Ambra 负责制作与扩展</p></div>
+    <dl class="game-catalog grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6">
+      {#each games as game}
+        <div><dt>{game.name}</dt><dd>{game.players}</dd></div>
+      {/each}
+    </dl>
+    <p class="catalog-note">已制作的七款游戏；其中首个已完成实际验证。这里展示名称与人数，暂无公开游玩入口。</p>
+  </section>
 
   <section class="identity-legend" aria-label="参与者与机">
     {#each people as person}
@@ -103,8 +145,33 @@
     {/each}
   </section>
 
+  <section class="route-section" aria-labelledby="route-title">
+    <h2 id="route-title">近期协作进展</h2>
+    <ol class="route-strip">
+      <li class="current-work"><strong>当前重点与任务状态</strong>
+        <ul class="capsules flex flex-wrap items-end gap-x-2.5 md:gap-x-3 gap-y-2" aria-label="当前协作方向">
+          {#each currentWork as item}<li>{@render capsule(item)}</li>{/each}
+        </ul>
+        <div class="post-focus">
+          <p><strong>Neil 当前重点 · Lamplit Post</strong><br />一种接入方式，一套工具，一套聊天记录搜索。</p>
+          <p>目标：让 Agent 统一接入不同 IM，在获授权的群聊和私聊中收发、查找消息。</p>
+          <p class="planned-note">覆盖所有 IM 是长期目标；Dashboard 与统一聊天记录搜索仍在规划中。</p>
+        </div>
+        <div class="faro-focus">
+          <p><strong>Ambra · Faro</strong> <span class="focus-state">接入体验优化中</span></p>
+          <ol class="onboarding-flow flex flex-wrap gap-x-3 gap-y-1 md:gap-x-4" aria-label="Faro 正在优化的桌游接入流程">
+            <li>选游戏</li><li>接入自己的机</li><li>通过 Faro 桌游 MCP 开桌</li><li>分享牌桌链接</li>
+          </ol>
+        </div>
+        <p>阿肆当前重点是 Parlour 群聊优化。Neil 的 Parlour 前端 Cloudflare 化受阻：{parlourBlockReason}。桌游品类与接入体验继续完善，多篇教程仍在编写。</p>
+      </li>
+      <li class="done"><strong>已有基础</strong><p>聊天、桌游与日常能力。</p></li>
+      <li class="plan"><strong>后续规划</strong><p>私聊、朋友圈、关系记忆与联结网络；探索 P2P 降低长期通讯成本。Lamplit 前端自定义保留长期。</p><a class="link" href="#phone-route">手机协作通路</a></li>
+    </ol>
+  </section>
+
   <section aria-labelledby="map-title">
-    <div class="map-heading"><h2 id="map-title">一起建设的部分</h2><div class="legend" role="group" aria-label="组件状态图例"><span class="done"><i></i>已有 / 已跑通</span><span class="next"><i></i>近期重点</span><span class="plan"><i></i>规划 / 探索</span></div></div>
+    <div class="map-heading"><h2 id="map-title">一起建设的部分</h2><div class="legend" role="group" aria-label="组件状态图例"><span class="done"><i></i>已有 / 已完成</span><span class="next"><i></i>近期重点</span><span class="plan"><i></i>规划 / 探索</span><span class="blocked"><i></i>受阻</span></div></div>
     <figure class="architecture" aria-labelledby="map-title" aria-describedby="map-caption">
       {#each rows as row}
         <section id={row.id} class="map-row" aria-label={row.name}>
@@ -125,25 +192,12 @@
               </ul>
             {/if}
             <p class="row-note">{row.note}</p>
+            {#if row.postNote}<p class="row-note">{row.postNote}</p>{/if}
           </div>
         </section>
       {/each}
       <figcaption id="map-caption">已有路径仍需配置与技术投入；规划不等于开箱即用。颜色与文字标状态，头像标各自贡献，不表示机之间共享数据。</figcaption>
     </figure>
-  </section>
-
-  <section class="route-section" aria-labelledby="route-title">
-    <h2 id="route-title">接下来</h2>
-    <ol class="route-strip">
-      <li class="next current-work"><strong>正在推进</strong>
-        <ul class="capsules flex flex-wrap items-end gap-x-2.5 md:gap-x-3 gap-y-2" aria-label="当前协作方向">
-          {#each currentWork as item}<li>{@render capsule(item)}</li>{/each}
-        </ul>
-        <p>Neil 继续完善群聊前端与体验；keet-for-agent 尚在测试，区别于已有 Keet 路径；多篇教程仍在编写。</p>
-      </li>
-      <li class="done"><strong>已有基础</strong><p>聊天、桌游与日常能力。</p></li>
-      <li class="plan"><strong>后续规划</strong><p>私聊、朋友圈、关系记忆与联结网络；探索 P2P 降低长期通讯成本。Lamplit 前端自定义保留长期。</p><a class="link" href="#phone-route">手机协作通路</a></li>
-    </ol>
   </section>
 
   <aside class="boundaries" aria-label="托管与当前建设边界">
@@ -154,12 +208,29 @@
 
 <style>
   .panorama { max-width: 1120px; margin: auto; overflow-wrap: anywhere; }
-  .joint-heading { padding: 28px 0 18px; }
-  h1 { font-size: clamp(28px, 3vw, 36px); margin: 0 0 12px; letter-spacing: -1px; }
-  h1 span { color: var(--color-secondary); font-weight: 400; }
-  .partners { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .partners p { font-size: 15px; margin: 0; }
-  .partners strong { margin-right: 10px; }
+  .overview-heading { padding: 28px 0 24px; }
+  h1 { font-size: clamp(32px, 4vw, 44px); margin: 0 0 12px; letter-spacing: -1px; }
+  .overview-heading p { color: var(--color-secondary); font-size: 17px; margin: 0; max-width: 42em; }
+  .products { margin-bottom: 28px; }
+  .product { border-top: 3px solid var(--product-color); padding-top: 12px; display: flex; flex-direction: column; align-items: start; min-width: 0; }
+  .lamplit-product { --product-color: #173e65; --product-accent: #e6b65c; }
+  .faro-product { --product-color: #176a64; --product-accent: #e99a57; }
+  .parlour-product { --product-color: #67509a; --product-accent: #cbbbe8; }
+  .product h2 { color: var(--product-color); font-size: 28px; margin: 0; }
+  .product-purpose { display: flex; align-items: center; gap: 8px; font-weight: 650; margin: 4px 0 12px; }
+  .product-purpose::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--product-accent); }
+  .product > p { font-size: 15px; }
+  .product-entry, .entry-status { margin: auto 0 0; min-height: 44px; display: inline-flex; align-items: center; font-size: 14px; }
+  .product-entry { color: var(--color-primary); }
+  .entry-status { color: var(--color-secondary); }
+  .games-section { background: var(--color-base-100); border-radius: 16px; padding: 20px 24px; margin-bottom: 24px; }
+  .catalog-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; }
+  .catalog-heading p { font-size: 14px; color: var(--color-secondary); margin: 0; }
+  .game-catalog { margin: 12px 0; }
+  .game-catalog > div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--color-base-300); }
+  .game-catalog dt { font-size: 16px; font-weight: 650; }
+  .game-catalog dd { margin: 0; font-size: 14px; color: var(--color-secondary); white-space: nowrap; }
+  .catalog-note { font-size: 14px; color: var(--color-secondary); margin: 0; }
   .identity-legend { display: flex; flex-wrap: wrap; gap: 12px 28px; border-block: 1px solid var(--color-base-300); padding: 14px 0; }
   .identity-legend > div { display: flex; gap: 8px; align-items: start; }
   .identity-legend strong { font-size: 14px; margin-right: 8px; }
@@ -174,10 +245,12 @@
   .legend > span { display: flex; align-items: center; gap: 7px; color: var(--state); }
   .legend i, .chip-state i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
   .next .chip-state i, .legend .next i { border-radius: 1px; }
+  .blocked .chip-state i, .legend .blocked i { border-radius: 1px; transform: rotate(45deg); }
   .plan .chip-state i, .legend .plan i { background: transparent; border: 1px solid currentColor; }
   .done { --state: var(--color-success-content); --wash: var(--color-success); }
   .next { --state: var(--color-warning-content); --wash: var(--color-warning); }
   .plan { --state: var(--color-info-content); --wash: var(--color-info); }
+  .blocked { --state: var(--color-error-content); --wash: var(--color-error); }
   figure { margin: 0; }
   .architecture { background: var(--color-base-100); border: 1px solid var(--color-base-300); border-radius: 16px; padding: 0 18px 14px; }
   .map-row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--color-base-300); scroll-margin-top: 20px; }
@@ -202,7 +275,14 @@
   .route-strip { display: grid; grid-template-columns: 0.7fr 1.4fr; gap: 24px; margin: 12px 0 0; padding: 0; list-style: none; }
   .route-strip > li { border-top: 2px solid var(--state); padding-top: 8px; }
   .route-strip > li > strong { font-size: 15px; color: var(--state); }
-  .current-work { grid-column: 1 / -1; }
+  .current-work { grid-column: 1 / -1; --state: var(--color-secondary); }
+  .post-focus, .faro-focus { margin: 14px 0 10px; max-width: 54em; }
+  .post-focus strong, .faro-focus strong { color: var(--color-base-content); }
+  .focus-state { color: var(--color-warning-content); margin-left: 8px; }
+  .onboarding-flow { margin: 4px 0 0; padding: 0; list-style: none; font-size: 14px; }
+  .onboarding-flow li { display: inline-flex; align-items: baseline; gap: 12px; }
+  .onboarding-flow li + li::before { content: '→'; color: var(--color-secondary); }
+  .post-focus .planned-note { color: var(--color-info-content); }
   .current-work .capsules { margin-top: 10px; }
   .route-strip p { font-size: 14px; margin: 4px 0 0; }
   .route-strip > .plan { border-top-style: dashed; }
@@ -211,8 +291,12 @@
   .boundaries p { font-size: 14px; color: var(--color-secondary); margin-bottom: 4px; }
   .page-links { display: flex; flex-wrap: wrap; gap: 4px 24px; }
   @media (max-width: 760px) {
-    .joint-heading { padding-top: 20px; }
-    .partners { grid-template-columns: 1fr; gap: 8px; }
+    .overview-heading { padding-top: 20px; }
+    .desktop-break { display: none; }
+    .product h2 { font-size: 25px; }
+    .product > p { margin-bottom: 8px; }
+    .product .entry-status { margin-bottom: 0; }
+    .games-section { padding: 18px; }
     .identity-legend { gap: 10px 20px; }
     .map-heading { gap: 8px; }
     .architecture { padding-inline: 12px; }

@@ -5,14 +5,14 @@
   import { phases } from '$lib/roadmap';
 </script>
 <svelte:head>
-  <title>群岛建设图 · 灯火群岛</title>
+  <title>Lamplit 建设图 · Lamplit</title>
   <meta name="description" content="免费托管与开源自托管当前可用。聊天记录迁入、用户全文搜索、人格文件编辑与定制对话压缩已可用；Phase 1 仅 MCP 接入仍在建设，可选开发助手也仍在建设。" />
 </svelte:head>
 <section class="roadmap-heading">
-  <p class="eyebrow">LAMPLIT ISLES / ROADMAP</p>
+  <p class="eyebrow">Lamplit / 建设图</p>
   <h1>你们的小家，<br />还有许多可能。</h1>
   <p>聊天、记忆、亲手布置。已经备好的，安心使用；<br />更远的去处，我们继续修建。</p>
-  <a class="link inline-flex min-h-11 items-center text-primary" href="/panorama/">了解 Parlour + Lamplit 的合作全景</a>
+  <a class="link inline-flex min-h-11 items-center text-primary" href="/panorama/">了解 Isles 总览</a>
 </section>
 <section class="cost-note" aria-labelledby="free-chat-title">
   <h2 id="free-chat-title">日常聊天，<br />不用订阅工作机。</h2>
@@ -26,4 +26,4 @@
     </details>
   {/each}
 </div>
-<section class="roadmap-ending"><h2>常用的，我们一起修好。<br />特别的，留给你们决定。</h2><p>聊天机的完整前后端开源，网站与文档也开源。你可以独立部署自己的小家；平台账户管理和工作机实现由我们维护。</p><a href="/letters/to-you/">读读这片群岛为什么开始 <ArrowRight size={16} class="inline-block align-middle" aria-hidden="true" /></a></section>
+<section class="roadmap-ending"><h2>常用的，我们一起修好。<br />特别的，留给你们决定。</h2><p>聊天机的完整前后端开源，网站与文档也开源。你可以独立部署自己的小家；平台账户管理和工作机实现由我们维护。</p><a href="/letters/to-you/">读读 Lamplit 为什么开始 <ArrowRight size={16} class="inline-block align-middle" aria-hidden="true" /></a></section>
